@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plexus U: Getting Started | Plexus</title>
+<meta name="description" content="Your first 21 days as a Plexus Brand Ambassador, planned around the time you have.">
+<meta name="theme-color" content="#ffffff">
+<!--
+  Single-file guide. Design matches the RightStart site (rightstartbonus.plexusworldwide.com).
+  Strings live in STR (en, es, fr). The 21-day plan lives in DAYS; activity amounts in COUNT and MINUTES.
+  Progress is saved in this browser only (localStorage). "Share with my Sponsor" makes a snapshot link (#s=...).
+  No earnings figures anywhere in this tool.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plexus: #E50046;        /* Plexus Red */
+    --plexus-hover: #c2003b;
+    --plexus-deep: #a10032;
+    --plexus-soft: #fde8ee;
+    --plexus-line: #f5c2d0;
+    --ink: #111111;
+    --ink-hover: #231F20;
+    --ink-soft: #231f20;
+    --muted: #A0A4AB;         /* Gray 450 */
+    --slate: #919d9d;
+    --line: #E2E2E2;          /* Gray 150 */
+    --paper: #ffffff;
+    --mist: #F6F6F6;          /* Gray 25 */
+    --disabled: #E6E6E6;      /* Gray 75 */
+    --focus: #0277BD;
+    --success: #2E7D32;
+    --success-tint: #E8F5E9;
+    --error: #B30E0E;
+    --warning: #C08A16;
+    --overlay: rgba(17,17,17,.5);
+    --shadow: 0 8px 24px rgba(17,17,17,.12);
+    --font: "DM Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --bar: 72px;
+    --topbar-h: 72px;
+    --chrome: 128px;
+    --wrap-pad: 24px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--font); font-size: 1rem; line-height: 1.25rem; font-weight: 300; color: var(--ink); background: var(--paper); font-variant-numeric: tabular-nums; }
+  button, input, select { font: inherit; color: inherit; font-weight: 600; }
+  h1 { font-size: 2rem; line-height: 2rem; letter-spacing: -1px; font-weight: 600; margin: 0 0 8px; }
+  h2 { font-size: 1.75rem; line-height: 1.75rem; letter-spacing: -1px; font-weight: 600; margin: 0 0 12px; }
+  h3 { font-size: 1.5rem; line-height: 1.75rem; letter-spacing: -1px; font-weight: 300; }
+  h4 { font-size: 1rem; line-height: 1rem; letter-spacing: 0; font-weight: 600; }
+  .eyebrow, h5 { font-size: 0.8rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+  .skip { position: absolute; left: 12px; top: 8px; z-index: 80; padding: 8px 14px; background: var(--ink); color: var(--paper); border-radius: 6.25rem; font-weight: 600; text-decoration: none; transform: translateY(-160%); }
+  .skip:focus { transform: none; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--wrap-pad); }
+  a { color: var(--plexus); font-weight: 600; text-underline-offset: 3px; }
+  a:hover { color: var(--plexus-hover); }
+
+  /* Top bar, language and menus (same as the RightStart site) */
+  .topbar { position: sticky; top: 0; z-index: 70; background: var(--paper); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: var(--bar); }
+  .brand { display: flex; align-items: center; flex: 1; min-width: 0; gap: 16px; }
+  .top-tools { display: flex; align-items: center; gap: 4px; flex: none; }
+  .icon-btn { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 0; background: transparent; color: var(--ink); cursor: pointer; padding: 0; flex: none; touch-action: manipulation; }
+  .icon-btn svg { display: block; }
+  .lang-sheet-title { display: none; margin: 0; align-items: center; justify-content: space-between; gap: 8px; }
+  .logo { display: block; height: 56px; width: auto; }
+  .lang { display: inline-flex; border: 1px solid var(--ink); border-radius: 6.25rem; overflow: hidden; }
+  .lang button { border: 0; background: var(--paper); min-height: 40px; padding: 0 16px; font-size: 0.95rem; font-weight: 600; cursor: pointer; color: var(--ink); }
+  .lang button + button { border-left: 1px solid var(--ink); }
+  .lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  .lang button:hover { background: var(--mist); }
+  .lang button[aria-pressed="true"]:hover { background: var(--ink-soft); }
+  .masthead { padding: 28px 0 0; }
+  .eyebrow { margin: 0 0 8px; font-size: 0.8rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--plexus); }
+  .masthead h1 { margin: 0 0 8px; font-size: 2rem; line-height: 2rem; font-weight: 600; letter-spacing: -1px; }
+  .masthead p { margin: 0; max-width: 62ch; font-size: 1rem; line-height: 1.25rem; font-weight: 300; }
+  .subnav { position: sticky; top: var(--topbar-h); z-index: 30; background: var(--paper); border-bottom: 1px solid var(--line); }
+  .sheet-head { display: none; }
+  .sheet-close { width: 44px; height: 44px; border: 0; background: transparent; font-size: 1.6rem; line-height: 1; cursor: pointer; color: var(--ink); }
+  .backdrop { position: fixed; top: var(--topbar-h); left: 0; right: 0; bottom: 0; background: rgba(17,17,17,.45); z-index: 55; }
+  .backdrop[hidden] { display: none !important; }
+  .subnav-inner { display: flex; flex-wrap: wrap; column-gap: 1.375rem; row-gap: 0; }
+  .subnav-inner a { flex: 0 1 auto; border-bottom: 2px solid transparent; color: var(--ink); font-weight: 600; font-size: 1rem; line-height: 1.3; padding: 0.875rem 0.25rem 0.5rem; text-decoration: none; touch-action: manipulation; }
+  .subnav-inner a:hover { color: var(--plexus); }
+  .subnav-inner a[aria-current="location"] { color: var(--plexus); border-bottom-color: var(--plexus); }
+
+  /* Shared building blocks */
+  main { padding-bottom: 12px; }
+  section.sec { padding: 1.75rem 0 3.25rem; }
+  main .sec > h2, .setup h2 { scroll-margin-top: calc(var(--chrome) + 0.25rem); }
+  h2 { margin: 0 0 12px; font-size: 1.75rem; line-height: 1.75rem; font-weight: 600; letter-spacing: -1px; }
+  h3 { font-weight: 300; font-size: 1.5rem; line-height: 1.75rem; letter-spacing: -1px; }
+  .lede { margin: 0 0 16px; max-width: 68ch; font-size: 1.08rem; }
+  .list { margin: 0 0 14px; padding-left: 1.15rem; max-width: 70ch; }
+  .list li { margin: 8px 0; padding-left: 4px; }
+  .list li::marker { color: var(--plexus); }
+  .help { margin: 10px 0 0; font-size: 0.95rem; color: var(--muted); }
+  .note { margin: 0 0 16px; padding: 12px 14px; border-left: 3px solid var(--ink); background: var(--mist); max-width: 78ch; font-weight: 600; }
+  .callout { margin: 0 0 20px; padding: 20px 22px; background: var(--mist); color: var(--ink); border-left: 4px solid var(--plexus); }
+  .callout h3 { margin: 0 0 8px; font-size: 1.2rem; }
+  .callout p { margin: 0 0 8px; }
+  .callout p:last-child, .callout ul:last-child { margin-bottom: 0; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 22px; border-radius: 6.25rem; font-weight: 600; cursor: pointer; border: 1px solid var(--ink); background: var(--paper); color: var(--ink); text-decoration: none; transition: background-color .2s, color .2s, border-color .2s; }
+  .btn:hover { background: var(--ink-soft); border-color: var(--ink-soft); color: var(--paper); }
+  .btn-primary { background: var(--plexus); border-color: var(--plexus); color: var(--paper); }
+  .btn-primary:hover { background: var(--plexus-hover); border-color: var(--plexus-hover); color: var(--paper); }
+  .btn:disabled, .btn:disabled:hover { background: var(--disabled); border-color: var(--disabled); color: var(--muted); cursor: not-allowed; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+  /* Step 1: pace and start date */
+  .setup { padding: 22px 0 10px; }
+  .setup h2 { margin: 0 0 6px; font-size: 1.35rem; }
+  .setup .lede { margin-bottom: 14px; }
+  .paces { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .pace { display: flex; flex-direction: column; gap: 4px; text-align: left; padding: 16px 18px; border: 1px solid var(--line); border-top: 4px solid var(--line); background: var(--paper); cursor: pointer; }
+  .pace:hover { border-color: var(--ink); border-top-color: var(--ink); }
+  .pace[aria-checked="true"] { border-color: var(--ink); border-top-color: var(--plexus); background: var(--plexus-soft); }
+  .pace-name { font-size: 1.25rem; font-weight: 700; }
+  .pace-hours { font-weight: 700; color: var(--plexus); }
+  .pace-day { color: var(--muted); font-size: 0.95rem; }
+  .pace-tag { align-self: flex-start; margin-top: 6px; padding: 2px 10px; border-radius: 6.25rem; background: var(--ink); color: var(--paper); font-size: 0.78rem; font-weight: 700; }
+  .setup-row { display: grid; grid-template-columns: minmax(14rem, 18rem) minmax(14rem, 18rem); gap: 1.5rem; margin-top: 0; margin-bottom: 24px; }
+  .field { margin: 0; border: 0; padding: 0; min-width: 0; }
+  .field label { display: block; font-weight: 600; font-size: 1rem; margin: 0 0 0.5rem; }
+  input[type="date"], input[type="text"] { width: 100%; min-height: 48px; border: 1px solid var(--ink); border-radius: 2px; background: var(--paper); padding: 0 12px; font-size: 1.05rem; }
+  .field .help { margin-top: 6px; }
+
+  /* Your day */
+  .day-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; margin-bottom: 14px; }
+  .day-kicker { margin: 0 0 2px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--plexus); }
+  .day-title { margin: 0; font-size: clamp(1.35rem, 2.4vw, 1.65rem); font-weight: 600; letter-spacing: -0.015em; }
+  .day-date { margin: 2px 0 0; color: var(--muted); font-weight: 600; }
+  .day-nav { display: flex; gap: 8px; flex-wrap: wrap; }
+  .day-nav .btn { padding: 0 16px; }
+  .meter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin: 0 0 16px; padding: 12px 14px; background: var(--mist); }
+  .meter strong { font-size: 1.05rem; }
+  .bar { flex: 1 1 180px; height: 8px; background: var(--paper); border: 1px solid var(--line); min-width: 140px; }
+  .bar span { display: block; height: 100%; background: var(--plexus); width: 0; transition: width .25s; }
+  .bar.complete span { background: var(--success); }
+  .acts { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .act { border: 1px solid var(--line); background: var(--paper); }
+  .act.done { background: var(--success-tint); border-color: #c8e6c9; }
+  .act-row { display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: start; padding: 14px 16px; }
+  .act-row input { width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--plexus); cursor: pointer; }
+  .act-row input:disabled { cursor: default; }
+  .act-title { font-weight: 700; font-size: 1.04rem; cursor: pointer; display: block; }
+  .act.done .act-title { text-decoration: line-through; text-decoration-color: var(--success); text-decoration-thickness: 2px; }
+  .act-detail { margin: 4px 0 0; color: var(--ink-soft); }
+  .act-time { font-size: 0.9rem; font-weight: 700; color: var(--muted); white-space: nowrap; padding-top: 2px; }
+  .act-extra { padding: 0 16px 14px 56px; display: grid; gap: 8px; justify-items: start; }
+  .act-extra details { justify-self: stretch; }
+  .act-extra details summary { cursor: pointer; font-weight: 700; color: var(--plexus); }
+  .act-extra details summary:hover { color: var(--plexus-hover); }
+  .own-note { margin: 8px 0 0; font-size: 0.92rem; color: var(--muted); max-width: 70ch; }
+  .own-note strong { color: var(--plexus); }
+  .own { margin: 0 0 18px; padding: 14px 16px; background: var(--plexus-soft); border-left: 4px solid var(--plexus); }
+  .own strong { display: block; color: var(--plexus); margin-bottom: 2px; }
+  .own p { margin: 0; }
+  .script { margin: 8px 0 0; padding: 10px 12px; border-left: 3px solid var(--plexus); background: var(--paper); font-style: italic; max-width: 70ch; }
+  .act.done .script { background: #f8f7fb; }
+  .soon { display: inline-block; padding: 2px 10px; border-radius: 6.25rem; background: var(--mist); color: var(--muted); font-size: 0.85rem; font-weight: 700; }
+  .day-msg { margin: 0 0 16px; max-width: 860px; }
+
+  /* 21-day plan grid */
+  .weeks-grid { display: grid; gap: 22px; }
+  .week h3 { margin: 0 0 10px; font-size: 1.12rem; }
+  .week h3 span { font-weight: 600; color: var(--muted); }
+  .days { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; }
+  .dcell { display: flex; flex-direction: column; gap: 3px; min-height: 128px; padding: 12px 10px 10px; text-align: left; border: 1px solid var(--line); background: var(--paper); cursor: pointer; position: relative; }
+  .dcell:hover { border-color: var(--ink); }
+  .dcell .dnum { font-size: 1.15rem; font-weight: 700; line-height: 1.15; padding-right: 22px; }
+  .dcell .ddate { font-size: 0.82rem; color: var(--muted); }
+  .dcell .dms { font-size: 0.88rem; font-weight: 700; color: var(--plexus); line-height: 1.25; }
+  .dcell .dprog { margin-top: auto; height: 6px; background: var(--mist); border-radius: 3px; overflow: hidden; }
+  .dcell .dprog span { display: block; height: 100%; background: var(--plexus); }
+  .dcell.today { border-color: var(--plexus); box-shadow: inset 0 0 0 1px var(--plexus); }
+  .dcell.selected { background: var(--mist); }
+  .dcell.complete { background: var(--success-tint); border-color: var(--success); }
+  .dcell.complete .dprog span { background: var(--success); }
+  .tally { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0 0 24px; }
+  .tally div { padding: 14px; border: 1px solid var(--line); }
+  .tally strong { display: block; font-size: 1.6rem; font-weight: 600; letter-spacing: -0.02em; }
+  .tally span { color: var(--muted); font-size: 0.92rem; font-weight: 600; }
+
+  /* Quick answers and resources */
+  .qa { border-top: 1px solid var(--line); }
+  .qa details { border-bottom: 1px solid var(--line); padding: 14px 0; }
+  .qa summary { cursor: pointer; font-weight: 700; font-size: 1.04rem; }
+  .qa summary:hover { color: var(--plexus); }
+  .qa p { margin: 10px 0 0; max-width: 70ch; }
+  .four { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0 0 22px; }
+  .four div { padding: 14px; border: 1px solid var(--line); border-top: 4px solid var(--plexus); }
+  .four strong { display: block; font-size: 1.5rem; color: var(--plexus); line-height: 1; margin-bottom: 6px; }
+  .fda { font-size: 0.88rem; color: var(--muted); max-width: 78ch; margin-top: 14px; }
+  .res { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+  .res a.card { display: block; padding: 16px 18px; border: 1px solid var(--line); text-decoration: none; color: var(--ink); }
+  .res a.card:hover { border-color: var(--ink); }
+  .res a.card strong { display: block; color: var(--plexus); margin-bottom: 4px; }
+  .res a.card span { color: var(--muted); font-size: 0.95rem; font-weight: 400; }
+  .res .card.soon-card { padding: 16px 18px; border: 1px dashed var(--slate); background: var(--mist); }
+  .res .card.soon-card strong { display: block; margin-bottom: 4px; }
+
+  /* Sponsor sharing */
+  .share-box { }
+  .share-link { display: flex; gap: 8px; margin-top: 12px; }
+  .share-note { margin: 12px 0 0; padding: 10px 12px; background: var(--plexus-soft); border-left: 3px solid var(--plexus); max-width: 70ch; }
+  .share-link input { flex: 1; min-height: 44px; font-size: 0.92rem; }
+  .sponsor-banner { background: var(--ink); color: var(--paper); }
+  .sponsor-banner .wrap { padding-top: 16px; padding-bottom: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+  .sponsor-banner p { margin: 0; max-width: 72ch; }
+  .sponsor-banner strong { color: #c9c4ea; }
+  .sponsor-banner .btn { border-color: var(--paper); color: var(--paper); background: transparent; }
+  .sponsor-banner .btn:hover { background: var(--paper); color: var(--ink); }
+  /* Sponsor view: the plan owner's setup and sharing tools aren't needed */
+  body.sponsor .setup, body.sponsor .subnav a[href="#h-share"], body.sponsor section[aria-labelledby="h-share"], body.sponsor .pace-mini, body.sponsor .edit-start, body.sponsor .pace-pill { display: none; }
+  .sponsor-banner .sp-meta { display: block; margin-top: 4px; color: #d8d6e3; }
+  .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 90; background: var(--ink); color: var(--paper); padding: 12px 18px; border-radius: 6.25rem; font-weight: 600; max-width: calc(100% - 32px); }
+
+  .disclaimer { background: var(--mist); margin: 0; padding: 36px 0 48px; font-size: 0.95rem; color: var(--muted); }
+  .disclaimer p { margin: 0 0 10px; max-width: 78ch; }
+  .foot-brand { font-weight: 600; color: var(--ink); }
+
+  /* Hide Your day section and its nav link — modal is the detail view */
+  section[aria-labelledby="h-day"], .subnav-inner a[href="#h-day"] { display: none !important; }
+
+  /* Pace dropdown in subnav */
+  .pace-dd { position: relative; margin-left: auto; display: none; align-items: center; gap: 8px; }
+  body.pace-docked .pace-dd { display: inline-flex; }
+  .pace-dd-name { font-weight: 600; color: var(--ink); font-size: 1rem; }
+  .pace-dd-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 14px; border: 0; border-radius: 6.25rem; background: var(--plexus); color: var(--paper); font-weight: 700; font-size: 0.95rem; cursor: pointer; }
+  .pace-dd-btn .caret { font-size: 0.7rem; margin-left: 2px; }
+  .pace-dd-btn:hover { background: var(--plexus-hover); }
+  .pace-dd-menu { position: absolute; top: calc(100% + 4px); right: 0; z-index: 40; min-width: 180px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); padding: 4px; }
+  .pace-dd-menu[hidden] { display: none; }
+  .pace-dd-menu button { display: block; width: 100%; text-align: left; border: 0; background: transparent; padding: 10px 12px; font-size: 0.95rem; font-weight: 600; cursor: pointer; border-radius: 4px; min-height: 44px; }
+  .pace-dd-menu button:hover, .pace-dd-menu button[aria-checked="true"] { background: var(--plexus-soft); color: var(--plexus); }
+  .pace-dd-menu button span { display: block; font-size: 0.78rem; font-weight: 400; color: var(--muted); margin-top: 2px; }
+
+  /* Day card meta */
+  .dcell { position: relative; }
+  .dcell .dopen { position: absolute; top: 10px; right: 8px; width: 18px; height: 18px; color: var(--ink); pointer-events: none; }
+  .dcell .dmeta { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; font-weight: 700; color: var(--ink); margin-top: 6px; }
+  .dcell .dmeta .dfrac { color: var(--ink); }
+  .dcell.complete .dmeta { display: none; }
+  .dcell .dcomplete { display: none; margin-top: auto; font-size: 0.88rem; font-weight: 700; color: var(--success); }
+  .dcell.complete .dcomplete { display: block; }
+  .dcell.complete .dprog { display: none; }
+  .pace-mini { display: none !important; }
+  .pace-mini button { border: 0; background: transparent; min-height: 44px; padding: 0 12px; font-size: 0.88rem; font-weight: 600; color: var(--ink); cursor: pointer; border-radius: 6.25rem; }
+  .pace-mini button[aria-checked="true"] { color: var(--plexus); font-weight: 700; box-shadow: inset 0 -2px 0 var(--plexus); }
+  .pace-mini button:hover, .pace-mini button:focus-visible { background: var(--mist); }
+  .pace-tip { position: absolute; top: calc(100% + 6px); right: 0; z-index: 80; min-width: 200px; max-width: 260px; padding: 10px 12px; background: var(--ink); color: var(--paper); border-radius: 8px; font-size: 0.82rem; line-height: 1.35; pointer-events: none; box-shadow: var(--shadow); }
+  .pace-tip[hidden] { display: none !important; }
+  .pace-tip strong { display: block; font-weight: 700; margin-bottom: 2px; }
+  .edit-start { display: none; align-items: center; gap: 4px; margin-right: 8px; min-height: 44px; padding: 0 12px; border: 0; border-radius: 6.25rem; background: var(--paper); font-size: 0.88rem; font-weight: 600; cursor: pointer; position: relative; }
+  body.edit-docked .edit-start { display: inline-flex; }
+  .edit-start .caret { margin-left: 4px; font-size: 0.7rem; }
+  .edit-pop { position: absolute; top: calc(100% + 8px); left: 0; z-index: 85; width: min(300px, calc(100vw - 32px)); padding: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 12px 32px rgba(17,17,17,.16); }
+  .edit-pop[hidden] { display: none; }
+  .edit-pop label { display: block; font-size: 0.9rem; font-weight: 600; margin: 0 0 6px; color: var(--ink); }
+  .edit-pop input { width: 100%; min-height: 44px; margin-bottom: 12px; padding: 0 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); }
+  .edit-pop .btn { width: 100%; justify-content: center; }
+  .pace-sheet { display: none; }
+  body.sheet-pace .pace-sheet { display: block; position: fixed; z-index: 65; left: 0; right: 0; bottom: 0; max-height: 70vh; overflow: auto; background: var(--paper); border-radius: 16px 16px 0 0; box-shadow: 0 -8px 28px rgba(17,17,17,.16); padding: 8px 16px calc(16px + env(safe-area-inset-bottom)); }
+  .pace-sheet-head { display: flex; align-items: center; justify-content: space-between; }
+  .pace-sheet .pace { margin-bottom: 8px; min-height: 44px; }
+
+  /* Day modal */
+  .day-modal { display: none; }
+  body.modal-day .day-modal { display: flex; position: fixed; inset: 0; z-index: 100; align-items: center; justify-content: center; padding: 16px; }
+  .day-modal-backdrop { position: absolute; inset: 0; background: var(--overlay); }
+  .day-modal-panel { position: relative; z-index: 1; width: min(720px, 100%); max-height: calc(100vh - 32px); overflow: auto; background: var(--paper); border-radius: 12px; padding: 20px 22px; }
+  .day-modal-close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border: 0; background: transparent; font-size: 1.5rem; cursor: pointer; }
+  .day-modal .day-head { margin-bottom: 12px; }
+  .day-modal .day-kicker { font-weight: 800; letter-spacing: 3px; }
+  @media (max-width: 860px) {
+    .pace-pill { display: none; }
+    body.pace-docked .pace-pill { display: inline-flex; }
+    body.modal-day .day-modal { align-items: flex-end; padding: 0; }
+    .day-modal-panel { width: 100%; max-height: 92vh; border-radius: 16px 16px 0 0; }
+  }
+  .pace-pill { display: none; align-items: center; gap: 4px; min-height: 44px; padding: 0 14px; border: 1px solid var(--ink); border-radius: 6.25rem; background: var(--paper); font-weight: 600; font-size: 0.88rem; cursor: pointer; }
+
+  /* Printable plan */
+  #print-plan { display: none; }
+  @media print {
+    body > *:not(#print-plan) { display: none !important; }
+    #print-plan { display: block; font-size: 11pt; color: #000; }
+    #print-plan h1 { font-size: 18pt; margin: 0 0 4pt; }
+    #print-plan .p-sub { margin: 0 0 12pt; }
+    #print-plan .p-day { break-inside: avoid; border-top: 1.5pt solid #000; padding: 6pt 0 8pt; }
+    #print-plan .p-day h2 { font-size: 12pt; margin: 0 0 4pt; }
+    #print-plan ul { list-style: none; margin: 0; padding: 0; }
+    #print-plan li { margin: 2pt 0; }
+    #print-plan .p-foot { margin-top: 12pt; font-size: 8.5pt; color: #444; }
+    @page { margin: 0.55in; }
+  }
+
+  @media (max-width: 860px) {
+    .nav-burger, .lang-burger { display: inline-flex; }
+    .lang { display: none; }
+    .subnav { position: static; height: 0; border: 0; background: transparent; overflow: visible; }
+    .subnav-panel { display: none; }
+    body.sheet-nav .subnav-panel {
+      display: block; position: fixed; z-index: 60; top: var(--topbar-h); right: 0; bottom: 0;
+      width: min(20rem, calc(100vw - 48px)); background: var(--paper);
+      box-shadow: -12px 0 28px rgba(17,17,17,.16); overflow-y: auto; overscroll-behavior: contain;
+      padding: 4px 16px calc(16px + env(safe-area-inset-bottom));
+    }
+    body.sheet-nav .sheet-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    body.sheet-nav .sheet-title { margin: 0; font-size: 1.15rem; font-weight: 700; }
+    body.sheet-nav .subnav-inner { flex-direction: column; padding: 0; }
+    body.sheet-nav .subnav-inner a { width: 100%; min-height: 3rem; padding: 0.75rem 1rem 0.75rem 0.6875rem; border-bottom: 1px solid var(--line); }
+    body.sheet-nav .subnav-inner a[aria-current="location"] { background: var(--plexus-soft); border-bottom-color: var(--line); box-shadow: inset 0.1875rem 0 0 var(--plexus); }
+    .dcell .dopen { width: 28px; height: 28px; }
+    .pace-dd-btn { font-size: 1rem; padding: 0 16px; }
+    .icon-btn svg { width: 26px; height: 26px; }
+    body.sheet-lang .lang {
+      display: flex; flex-direction: column; position: fixed; z-index: 60; top: var(--topbar-h); right: 0; bottom: 0;
+      width: min(18rem, calc(100vw - 48px)); background: var(--paper); border: 0; border-radius: 0; overflow: auto;
+      box-shadow: -12px 0 28px rgba(17,17,17,.16); padding: 8px 8px calc(16px + env(safe-area-inset-bottom));
+    }
+    body.sheet-nav .subnav { z-index: 60; }
+    body.sheet-lang .lang-sheet-title { display: flex; font-weight: 700; font-size: 1.15rem; padding: 4px 4px 8px 12px; }
+    body.sheet-lang .lang button { width: 100%; min-height: 48px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; text-align: left; padding: 0 14px; background: transparent; color: var(--ink); }
+    body.sheet-lang .lang button[aria-pressed="true"] { background: var(--plexus-soft); color: var(--plexus-deep); box-shadow: inset 3px 0 0 var(--plexus); }
+    body.sheet-nav, body.sheet-lang { overflow: hidden; }
+    .days { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  @media (max-width: 800px) {
+    :root { --wrap-pad: 16px; }
+    .paces { grid-template-columns: 1fr; }
+    .pace { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 12px; padding: 12px 14px; }
+    .pace-day { flex-basis: 100%; }
+    .pace-tag { margin-top: 2px; }
+    .setup-row { grid-template-columns: 1fr; gap: 14px; }
+    .four, .tally { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .act-row { grid-template-columns: 26px 1fr; padding: 12px 12px; }
+    .act-time { grid-column: 2; padding-top: 0; }
+    .act-extra { padding: 0 12px 12px 50px; }
+    .masthead { padding-top: 20px; }
+    .masthead p, .lede { font-size: 1.02rem; }
+    .callout { padding: 14px; }
+    .share-link { flex-direction: column; }
+  }
+  @media (max-width: 560px) {
+    .logo { height: 48px; }
+    .days { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .dcell { min-height: 92px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#setup" data-i18n="skip"></a>
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><img class="logo" id="logo" src="data:image/png;base64,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" alt="Plexus U" width="44" height="56">
+      <div class="edit-wrap" style="position:relative">
+        <button type="button" class="edit-start" id="edit-start" aria-expanded="false" aria-controls="edit-pop" aria-label="Edit start date and name"><span id="edit-start-label"></span><span class="caret">▾</span></button>
+        <div class="edit-pop" id="edit-pop" hidden>
+          <label for="edit-name" data-i18n="setup.name"></label>
+          <input type="text" id="edit-name" maxlength="40" autocomplete="given-name">
+          <label for="edit-date" data-i18n="setup.start"></label>
+          <input type="date" id="edit-date">
+        </div>
+      </div>
+    </div>
+    <div class="top-tools">
+      <button type="button" class="pace-pill" id="pace-pill" aria-expanded="false" aria-controls="pace-sheet"><span id="pace-pill-label">Pace</span> ▾</button>
+      <div class="pace-mini" id="pace-mini" role="radiogroup" aria-label="Pace"></div>
+      <div class="pace-tip" id="pace-tip" hidden></div>
+      <div class="lang" role="group" id="lang-group" aria-label="Language">
+        <div class="lang-sheet-title"><span data-i18n="nav.lang"></span><button type="button" class="sheet-close" data-close="lang"><span class="sr-only" data-i18n="close"></span><span aria-hidden="true">&times;</span></button></div>
+        <button type="button" data-lang="en" lang="en">English</button>
+        <button type="button" data-lang="es" lang="es">Español</button>
+        <button type="button" data-lang="fr" lang="fr">Français</button>
+      </div>
+      <button type="button" class="icon-btn lang-burger" id="lang-burger" aria-expanded="false" aria-controls="lang-group">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c2.4 2.7 3.6 5.7 3.6 9s-1.2 6.3-3.6 9c-2.4-2.7-3.6-5.7-3.6-9S9.6 5.7 12 3z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      </button>
+      <button type="button" class="icon-btn nav-burger" id="nav-burger" aria-expanded="false" aria-controls="section-tabs">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="backdrop" id="sheet-backdrop" hidden></div>
+<div class="pace-sheet" id="pace-sheet" hidden>
+  <div class="pace-sheet-head">
+    <p class="sheet-title" data-i18n="setup.h"></p>
+    <button type="button" class="sheet-close" data-close="pace"><span class="sr-only" data-i18n="close"></span><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div id="pace-sheet-body"></div>
+</div>
+<div class="day-modal" id="day-modal" hidden>
+  <div class="day-modal-backdrop" data-close="modal"></div>
+  <div class="day-modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-day-title">
+    <button type="button" class="day-modal-close" data-close="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <div id="modal-day-content"></div>
+  </div>
+</div>
+<div class="sponsor-banner" id="sponsor-banner" hidden>
+  <div class="wrap">
+    <p id="sponsor-text"></p>
+    <button type="button" class="btn" id="sponsor-exit" data-i18n="sp.exit"></button>
+  </div>
+</div>
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="eyebrow"></p>
+    <h1 data-i18n="h1"></h1>
+    <p data-i18n="sub"></p>
+  </div>
+</header>
+
+<section class="setup" id="setup" aria-labelledby="h-setup">
+  <div class="wrap">
+    <div class="setup-row">
+      <div class="field">
+        <label for="start-date" data-i18n="setup.start"></label>
+        <input type="date" id="start-date">
+        <p class="help" data-i18n="setup.startHelp"></p>
+      </div>
+      <div class="field">
+        <label for="first-name" data-i18n="setup.name"></label>
+        <input type="text" id="first-name" autocomplete="given-name" maxlength="40">
+        <p class="help" data-i18n="setup.nameHelp"></p>
+      </div>
+    </div>
+    <h2 id="h-setup" data-i18n="setup.h"></h2>
+    <p class="lede" data-i18n="setup.lede"></p>
+    <div class="paces" role="radiogroup" aria-labelledby="h-setup" id="paces"></div>
+  </div>
+</section>
+
+<nav class="subnav" aria-labelledby="nav-label">
+  <span id="nav-label" class="sr-only" data-i18n="nav.label"></span>
+  <div class="subnav-panel" id="section-tabs">
+    <div class="sheet-head">
+      <p class="sheet-title" data-i18n="nav.label"></p>
+      <button type="button" class="sheet-close" data-close="nav"><span class="sr-only" data-i18n="close"></span><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="wrap subnav-inner">
+      <a href="#h-plan" data-i18n="nav.plan"></a>
+      <a href="#h-say" data-i18n="nav.say"></a>
+      <a href="#h-res" data-i18n="nav.res"></a>
+      <a href="#h-share" data-i18n="nav.share"></a>
+      <div class="pace-dd" id="pace-dd">
+        <span class="pace-dd-name">Pace:</span>
+        <button type="button" class="pace-dd-btn" id="pace-dd-btn" aria-expanded="false" aria-haspopup="true" aria-label="Pace"><span id="pace-dd-label"></span> <span class="caret" aria-hidden="true">▾</span></button>
+        <div class="pace-dd-menu" id="pace-dd-menu" hidden role="menu"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap" id="main">
+  <section class="sec" aria-labelledby="h-day">
+    <h2 id="h-day" data-i18n="nav.day"></h2>
+    <div id="day"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-plan">
+    <h2 id="h-plan" data-i18n="plan.h"></h2>
+    <p class="lede" id="plan-lede"></p>
+    <div class="tally" id="tally"></div>
+    <div class="weeks-grid" id="weeks"></div>
+    <div class="btn-row" style="margin-top:20px">
+      <button type="button" class="btn" id="print-btn" data-i18n="plan.print"></button>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-say">
+    <h2 id="h-say" data-i18n="say.h"></h2>
+    <p class="lede" data-i18n="say.lede"></p>
+    <div class="own"><strong data-i18n="own.h"></strong><p data-i18n="own.p"></p></div>
+    <div class="four" id="four"></div>
+    <h3 data-i18n="say.faqH"></h3>
+    <div class="qa" id="faq"></div>
+    <p class="fda" data-i18n="fda"></p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-res">
+    <h2 id="h-res" data-i18n="res.h"></h2>
+    <p class="lede" data-i18n="res.lede"></p>
+    <div class="res" id="res"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-share">
+    <h2 id="h-share" data-i18n="share.h"></h2>
+    <div class="share-box">
+      <p class="lede" data-i18n="share.lede"></p>
+      <ul class="list">
+        <li data-i18n="share.p1"></li>
+        <li data-i18n="share.p2"></li>
+      </ul>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" id="share-btn" data-i18n="share.btn"></button>
+      </div>
+      <p class="share-note" id="share-note" role="status" hidden></p>
+      <div class="share-link" id="share-link" hidden>
+        <input type="text" id="share-url" readonly aria-labelledby="h-share">
+        <button type="button" class="btn" id="copy-btn" data-i18n="share.copy"></button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="disclaimer">
+  <div class="wrap">
+    <p class="foot-brand">Plexus Worldwide®</p>
+    <p data-i18n="disclaimer"></p>
+  </div>
+</footer>
+<div id="print-plan" aria-hidden="true"></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(() => {
+  'use strict';
+
+  /* =====================================================================
+     SITE OWNER SETTINGS
+     PODCAST           Add each episode's link when it's ready (leave '' for
+                       "coming soon").
+     SURVEY_URL        Link for the Plexus U survey and certificate ('' keeps
+                       the "watch for your final email" wording).
+     Language          Add ?lang=es or ?lang=fr to link straight to a language.
+     ===================================================================== */
+  const CONFIG = {
+    PODCAST: { 1: '', 2: '', 3: '', 4: '', 5: '' },
+    SURVEY_URL: ''
+  };
+
+  const LINKS = {
+    rightstart: 'https://rightstartbonus.plexusworldwide.com/',
+    academy: 'https://www.facebook.com/groups/PlexusNewAmbassadorsAcademy',
+    boards: 'https://app.boards.com/boards/3ZHiy.CW9bTl',
+    hub: 'https://plexusworldwide.com/plexus-training-hub',
+    cart: 'https://indd.adobe.com/view/804f49fb-2478-4530-a148-94842e8a1983',
+    howShare: 'https://indd.adobe.com/view/8eddbfe1-b2b4-4c46-b21f-e9425ce363a8',
+    whoShare: 'https://indd.adobe.com/view/fd215507-4f7b-4af4-bae5-74d7dd6cc483',
+    guide: 'https://indd.adobe.com/view/cba931b5-b04c-4a80-b32c-3aee78085046',
+    sharing: 'https://plexusworldwide.com/sharing-plexus',
+    join: 'https://plexusworldwide.com/join',
+    site: 'https://plexusworldwide.com/'
+  };
+  const IDS = 'https://static.plexusworldwide.com/cdn/income-disclosure-statement-en-us.pdf';
+
+  /* ------------------------------ The plan ---------------------------- */
+  // Paces. Everyone hits the same milestones; the pace sets how much of each activity.
+  const PACES = ['walk', 'jog', 'run'];
+  // Amounts that change with the pace
+  const COUNT = {
+    names:       { walk: 25, jog: 25, run: 50 },
+    invite4:     { walk: 3,  jog: 5,  run: 10 },
+    eventInvite: { walk: 5,  jog: 8,  run: 12 },
+    conv:        { walk: 3,  jog: 5,  run: 12 },
+    follow:      { walk: 3,  jog: 5,  run: 10 },
+    warm:        { walk: 3,  jog: 5,  run: 8 },
+    opportunity: { walk: 1,  jog: 1,  run: 2 },
+    growList:    { walk: 0,  jog: 0,  run: 10 }
+  };
+  // Minutes: a number, a per-person rate for counted activities, or a per-pace value
+  const MINUTES = {
+    sponsor0: 15, why: 10, names: { walk: 20, jog: 20, run: 35 }, carts: 15, eventDate: 10, podcast: 20,
+    boards: 10, academy: 5, invite4: 6, eventInvite: 3, subscription: 5, conv: 6, follow: 5,
+    firstPost: 20, replies: 15, family: 10, cartSend: 5, remind: 10, catchup: 15,
+    plexusPay: 10, post: 20, launchEvent: 75, eventFollow: 20, training: 60, secondEvent: 75,
+    care: 15, goals: 10, spot: 5, warm: 5, rereadWhy: 5, identify: 10, opportunity: 20, learnBlock: 15,
+    sponsorCheck: { walk: 15, jog: 15, run: 10 }, growList: 15, learn: 30, planNext: 30, survey: 10, celebrate: 15
+  };
+  // Which paces get an activity: '' = everyone, otherwise a list such as 'jog run'
+  const W = 'walk', J = 'jog', R = 'run';
+  const DAYS = [
+    /* 0 */ { ms: 'launch', items: [['sponsor0'], ['why'], ['names'], ['carts'], ['eventDate'], ['podcast', '', 1]] },
+    /* 1 */ { items: [['boards'], ['academy'], ['invite4'], ['eventInvite'], ['sponsorCheck', [R]], ['learn', [R]]] },
+    /* 2 */ { items: [['subscription'], ['conv'], ['eventInvite'], ['follow'], ['sponsorCheck', [R]], ['training', [R]]] },
+    /* 3 */ { ms: 'open', items: [['firstPost'], ['replies'], ['eventInvite'], ['podcast', '', 2], ['sponsorCheck', [J, R]]] },
+    /* 4 */ { items: [['conv'], ['follow'], ['eventInvite'], ['post', [R]], ['training', [J, R]], ['sponsorCheck', [R]]] },
+    /* 5 */ { ms: 'convo', items: [['family'], ['conv'], ['cartSend'], ['follow'], ['eventInvite'], ['post', [J, R]], ['podcast', '', 3], ['sponsorCheck', [R]]] },
+    /* 6 */ { ms: 'catch', items: [['remind'], ['sponsorCheck'], ['catchup'], ['post', [R]], ['growList', [R]]] },
+    /* 7 */ { ms: 'paid', items: [['plexusPay'], ['launchEvent'], ['post'], ['podcast', '', 4], ['sponsorCheck', [R]]] },
+    /* 8 */ { items: [['eventFollow'], ['conv'], ['cartSend'], ['post', [R]], ['learn', [J, R]], ['sponsorCheck', [R]]] },
+    /* 9 */ { items: [['conv'], ['follow'], ['post', [J, R]], ['training', [J, R]], ['sponsorCheck', [R]]] },
+    /* 10 */ { ms: 'care', items: [['care'], ['goals'], ['spot'], ['follow'], ['podcast', '', 5], ['post', [R]], ['sponsorCheck', [J, R]]] },
+    /* 11 */ { items: [['conv'], ['follow'], ['post', [W, R]], ['training', [R]], ['sponsorCheck', [R]]] },
+    /* 12 */ { items: [['conv'], ['follow'], ['cartSend'], ['post', [J, R]], ['secondEvent', [R]], ['sponsorCheck', [R]]] },
+    /* 13 */ { ms: 'catch', items: [['sponsorCheck'], ['catchup'], ['post', [R]], ['growList', [R]]] },
+    /* 14 */ { ms: 'first', items: [['warm'], ['rereadWhy'], ['conv'], ['care'], ['post', [R]], ['sponsorCheck', [R]]] },
+    /* 15 */ { items: [['conv'], ['follow'], ['post', [R]], ['learn', [J, R]], ['sponsorCheck', [R]]] },
+    /* 16 */ { items: [['conv'], ['follow'], ['post', [J, R]], ['training', [J, R]], ['sponsorCheck', [R]]] },
+    /* 17 */ { ms: 'block', items: [['identify'], ['opportunity'], ['learnBlock'], ['care'], ['post', [R]], ['sponsorCheck', [J, R]]] },
+    /* 18 */ { items: [['conv'], ['follow'], ['cartSend'], ['post', [W, R]], ['training', [R]], ['sponsorCheck', [R]]] },
+    /* 19 */ { items: [['conv'], ['follow'], ['care'], ['post', [J, R]], ['growList', [R]], ['sponsorCheck', [R]]] },
+    /* 20 */ { ms: 'catch', items: [['catchup'], ['planNext'], ['post', [R]]] },
+    /* 21 */ { ms: 'done', items: [['survey'], ['celebrate']] }
+  ];
+  const WEEKS = [[0, 6], [7, 13], [14, 21]];
+  // Activity totals shown in "Your 21 days"
+  const TALLY = { conv: ['conv', 'invite4'], follow: ['follow', 'warm', 'eventFollow'], invites: ['eventInvite'], posts: ['firstPost', 'post', 'celebrate'] };
+
+  /* ---------------------------- Translations -------------------------- */
+  const LOCALES = { en: 'en-US', es: 'es-US', fr: 'fr-CA' };
+  const STR = {
+    en: {
+      title: 'Plexus U: Getting Started | Plexus',
+      skip: 'Skip to your plan',
+      eyebrow: 'For new Brand Ambassadors',
+      h1: 'Plexus U: Getting Started',
+      sub: 'Your first 21 days as a Brand Ambassador, planned around the time you have.',
+      'nav.lang': 'Language', 'nav.label': 'Sections', close: 'Close',
+      'nav.day': 'Your day', 'nav.plan': 'Dailies', 'nav.say': 'What to say', 'nav.res': 'Resources', 'nav.share': 'Share with your Sponsor',
+      'setup.h': 'Step 1: Choose your pace',
+      'setup.lede': 'How much time can you give your business each week? Everyone reaches the same milestones; your pace sets how much of each activity you do. You can change it anytime.',
+      pace: {
+        walk: { name: 'Walk', hours: 'Up to 10 hours a week', day: 'About 1 hour a day, 6 days a week' },
+        jog: { name: 'Jog', hours: '10 to 15 hours a week', day: 'About 2 hours a day, 6 days a week', tag: 'Recommended' },
+        run: { name: 'Run', hours: '20 to 40 hours a week', day: 'About 3 to 6 hours a day, 6 days a week' }
+      },
+      'setup.start': 'Your start date (Day 0)',
+      'setup.startHelp': 'The day you became a Brand Ambassador, or the day you begin this plan.',
+      'setup.name': 'Your first name (optional)',
+      'setup.nameHelp': 'Shown on the link you share with your Sponsor.',
+      ms: {
+        launch: 'Launch your business', open: "You're open for business", convo: 'Turn interest into conversations', catch: 'Catch up and look ahead',
+        paid: 'Get set up to get paid', care: 'Great customer care', first: 'Help your first customers get started',
+        block: 'Who wants to share alongside you?', done: 'Complete Plexus U', keep: 'Keep the momentum going'
+      },
+      weeks: ['Week 1: Launch', 'Week 2: Connect and care', 'Week 3: Grow your team'],
+      dayN: n => `Day ${n}`,
+      'day.of': n => `Day ${n} of 21`,
+      'day.before': d => `Your plan starts on ${d}. Here's a preview of Day 0.`,
+      'day.after': 'You\'ve reached the end of your first 21 days. Here\'s your final day; finish anything you missed from the plan below.',
+      'day.today': 'Today',
+      'day.prev': 'Previous day', 'day.next': 'Next day', 'day.back': 'Back to today',
+      'day.time': m => `About ${m} today`,
+      'day.done': (a, b) => `${a} of ${b} done`,
+      'day.all': 'Everything for this day is done. Nice work!',
+      'day.choose': 'Choose your pace in Step 1 to see your plan.',
+      mins: m => m < 60 ? `${m} min` : (m % 60 ? `${Math.floor(m / 60)} hr ${m % 60} min` : `${m / 60} hr`),
+      'act.say': 'What to say', 'act.how': 'How to do it', 'act.open': 'Open',
+      'plan.h': 'Your 21 days',
+      'plan.lede': (p, h) => `Your pace: ${p} (${h}). Select any day to see its activities.`,
+      'plan.week': h => `about ${h}`,
+      'plan.print': 'Print my plan',
+      tally: { conv: 'conversations started', follow: 'follow-ups', invites: 'event invitations', posts: 'posts shared' },
+      'say.h': 'What to say',
+      'say.lede': 'With any invitation to try Plexus, share these four things. Keep it personal and simple.',
+      four: ['Why you decided to start Plexus', "What you're excited about", 'Who told you about Plexus, and why you tried it', 'An invitation to try it or come along on the journey with you'],
+      'say.faqH': 'Most common questions',
+      'own.h': 'Make it your own',
+      'own.p': 'These words are a starting point, not a script to read word for word. Use them as a template and make them your own: your story, your words, your voice.',
+      faq: [
+        ['What is Plexus?', 'Plexus is a pioneer in gut health, providing innovation through patented formulations and rigorous third-party testing that supports whole-body wellness from the inside out. From gut health, weight management, skincare, active lifestyle and personal care to overall health and wellness, Plexus products feed your system to benefit the body and mind. Plexus products are non-GMO with no artificial flavors, colors, preservatives or sweeteners.'],
+        ["What's the cost?", 'Up-to-date product prices are on your Plexus website.'],
+        ['How long do Plexus products last?', "Plexus products typically come in a 30-day supply and have a two-year shelf life. Check each product's info sheet for full details on recommended serving and packaging."],
+        ['Do I replace meals with Plexus products?', 'No. Plexus is meant to complement your lifestyle, not make you skip meals or promote unhealthy habits.'],
+        ['Are Plexus products natural?', 'Plexus does not use artificial colors, flavors, preservatives or sweeteners, and complies with label regulations in the USA and globally. There is no consistent or reliable definition of "natural" or "synthetic," and regulatory agencies don\'t provide one. Plexus focuses on meeting or exceeding all objective standards for quality and safety, and makes sure labels contain all active ingredients in the product.']
+      ],
+      fda: '*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.',
+      'res.h': 'Resources',
+      'res.lede': 'Everything your plan links to, in one place.',
+      res: [
+        ['rightstart', 'How RightStart Works', 'See how Business Blocks come together and how RightStart works.'],
+        ['academy', 'New Ambassadors Academy', 'The Facebook group for new Brand Ambassadors.'],
+        ['boards', 'The Plexus Board on Boards', 'Open the "New to Plexus? Start here" folder.'],
+        ['hub', 'Plexus Training Hub', 'Upcoming trainings, live calls and events.'],
+        ['guide', 'Getting Started Guide', 'Bring someone along on the journey in 3 simple steps.'],
+        ['cart', 'How to make a cart link', 'Build and save your two cart links.'],
+        ['howShare', 'How to Share Guide', 'Ideas for sharing your story.'],
+        ['whoShare', 'Who and how to share', 'More examples of who and how to share.'],
+        ['sharing', 'Sharing Plexus', 'Products, community and sharing on social media.'],
+        ['join', 'How to join Plexus', 'The page to send people who want to join.']
+      ],
+      'res.podcast': 'Plexus U Podcast', 'res.podcastSoon': 'Episodes are coming soon. They\'ll appear in your plan when they\'re ready.',
+      'share.h': 'Share with your Sponsor',
+      'share.lede': 'Your Sponsor is your partner through these 21 days. Send them a link to your plan so they can see your progress and cheer you on.',
+      'share.p1': 'The link shows your progress as of the moment you create it. Share a new link whenever you want a check-in.',
+      'share.p2': 'Your progress is saved in this browser only. Use the same phone or computer to keep checking things off.',
+      'share.btn': 'Create my Sponsor link', 'share.copy': 'Copy link',
+      'share.copied': 'Link copied. Paste it into a text or message to your Sponsor.',
+      'share.needPace': 'Choose your pace in Step 1 first, then come back to create your link.',
+      'share.local': "Heads up: you're viewing a preview or a copy saved on a computer, so this link only works here. Once the guide is live on the website, links will open for your Sponsor.",
+      'share.text': n => `${n ? n + "'s" : 'My'} Plexus U: Getting Started plan`,
+      'sp.text': (n, d, day, done, total) => `<strong>Sponsor view.</strong> ${n ? n + "'s" : 'This'} plan, shared on ${d}: Day ${day}, ${done} of ${total} activities done. This is a snapshot; ask for a new link to see updates.`,
+      'sp.exit': 'Plan my own 21 days',
+      'sp.before': d => `This plan starts on ${d}.`,
+      'sp.pace': (p, h, d) => `${p} pace (${h.toLowerCase()}) · Started ${d}`,
+      'sp.day': n => n ? `${n}'s day` : 'Their day',
+      'sp.plan': n => n ? `${n}'s 21 days` : 'Their 21 days',
+      'sp.planLede': 'Select any day to see its activities and what has been checked off.',
+      'sp.after': 'This plan has reached the end of the first 21 days. Here is the final day.',
+      'sp.print': 'Print this plan',
+      'print.sub': (p, d) => `Pace: ${p} · Start date: ${d}`,
+      'print.foot': 'Progress shown as of the day this plan was printed.',
+      disclaimer: `Plexus makes no income or profit guarantees. Personal earnings and profits will vary. Your success depends on the amount of sales, effort, commitment, leadership abilities, economic and market conditions, and expenses incurred in operating your business. In 2025, the average annual earnings for all Ambassadors were $780. For more information about earnings, see the <a href="${IDS}" target="_blank" rel="noopener">Plexus Annual Income Disclosure Statement</a>.`,
+      podcast: {
+        1: 'Your First 30 Days', 2: 'Your Story Matters', 3: 'Connections Create Momentum', 4: 'Hosting Events', 5: 'From Customer to Community'
+      },
+      podcastT: (n, name) => `Listen: Plexus U Podcast, Episode ${n}: ${name}`,
+      podcastSoon: 'Coming soon',
+      act: {
+        sponsor0: { t: 'Connect with your Sponsor', d: 'Share your why, agree on how you\'ll stay in touch, and plan your launch event together.' },
+        why: { t: 'Write your why and your 6-month vision', d: 'Answer two questions: Why did I decide to become a Plexus Brand Ambassador? What would success look like 6 months from now? Invite your family to join in, or make a vision board, then share your answers with your Sponsor.' },
+        names: { t: 'List at least {n} names', d: 'Friends, coworkers, family friends, neighbors, social media connections, and people interested in wellness. Not sure where to start? Look at your most-liked post and see who engaged. Don\'t decide for anyone; just write names.' },
+        carts: { t: 'Build your two cart links', d: 'Cart 1: Gut Health System. Cart 2: Gut Health System plus two products that fit common goals. Save both links somewhere easy to share from, like a notes app on your phone.', link: 'cart' },
+        eventDate: { t: 'Schedule your launch event', d: 'Within your first 24 to 48 hours, choose a date with your Sponsor, about a week from now. Pick the format that feels most comfortable: in person, Zoom, or Facebook or Instagram Messenger. Think of it as your ribbon-cutting ceremony!' },
+        boards: { t: 'Join Boards and the Plexus Board', d: 'Download Boards (it has a free account option), join the Plexus Board, and open the "New to Plexus? Start here" folder.', link: 'boards' },
+        academy: { t: 'Join the New Ambassadors Academy', d: 'Get plugged in to the Plexus New Ambassadors Academy on Facebook.', link: 'academy' },
+        invite4: { t: 'Text {n} people you\'d love to try Plexus with you', d: 'Share why you started, what you\'re excited about, who told you about Plexus, and an invitation to join you.', s: ['Hey Sally! Hope all is well. I started taking some amazing gut health supplements recently and they\'ve been a game changer. If you have any interest, I\'d love to get you some information.', 'Hey Sally! I\'m so excited. I just ordered some amazing gut health products that my friend Susie has had great results with. I\'d love to have a friend to do this with. I can send you some info.'] },
+        eventInvite: { t: 'Invite {n} people to your launch event', d: 'Try sending voice memos. They add a personal touch and share your excitement.', s: ['Hi! I recently partnered with Plexus and I\'m hosting my first event to share what I\'m learning. I\'d love for you to join to support me in my business launch.'] },
+        subscription: { t: 'Make sure your Subscription Order is on', d: 'Your subscription keeps you eligible to earn commissions and makes sure you always have your favorite products. Later, help your first customers and Brand Ambassadors check theirs too.' },
+        conv: { t: 'Start {n} conversations', d: 'Reach out to people you know who may be interested in improving their health, energy, weight management or overall wellness. Ask questions and listen. When someone shows interest, learn about their goals.', s: ['I\'m excited about some changes I\'m making in my health journey. I saw in your recent post that you\'re working on your health too. What made you decide that now is the right time to hit the reset button?'] },
+        follow: { t: 'Follow up with {n} people', d: 'Reply to everyone who responded, liked, commented or asked a question. Move conversations to a text or DM so you can answer questions and learn their goals.', s: ['I wanted to follow up and see if you had any questions about the products or your goals. I\'d be happy to help however I can.'] },
+        firstPost: { t: 'Make your first post', d: 'Share why you\'re excited, why you started, and your goals, and invite others to follow along. Use a clear photo, be yourself, make the post public, and tag your Sponsor so they can help boost it.', s: ['I\'m tired of feeling ______. My journey toward changing that starts today. I\'m excited to focus on my health and wellness and see where this journey leads. Anyone else working on their health goals and want to follow along?'], link: 'howShare' },
+        replies: { t: 'Reply to comments and messages', d: 'If someone asks what Plexus is, share a little, then ask about their goals. Relate to what they share, ask how it affects their day, and offer information and answers.', s: ['Plexus is a health and wellness company specializing in gut health products for every need. What are some of your health goals?', 'How does that affect your day?', 'Do these products sound like something that would be helpful for your health goals?'] },
+        family: { t: 'Agree on your business hours with your family', d: 'Choose the times you\'ll spend on your business each week, at your pace of {h}. Protecting that time helps you stay focused.' },
+        cartSend: { t: 'Send a Shared Cart Link to anyone ready to try', d: 'Once you know someone\'s goals, send the cart link that fits best. It keeps things simple and makes it easy to get started.', s: ['Based on what you shared, I put together a recommended cart to make things easy. Take a look and let me know what you\'re excited about trying.'], link: 'cart' },
+        remind: { t: 'Remind your launch event guests', d: 'Confirm the time and how to join, and thank them for supporting you.', s: ['So excited to see you at my launch event! Here\'s the time and link again. Thank you for supporting me!'] },
+        catchup: { t: 'Catch up and look ahead', d: 'Finish anything from this week you didn\'t get to, then look at what\'s coming next week.' },
+        plexusPay: { t: 'Activate your Plexus Pay account', d: 'Look for the email you received on your first day with setup instructions. Activating it means you\'re ready to receive commissions and bonuses.' },
+        post: { t: 'Share another post about your journey', d: 'Ideas: a healthy habit you\'re working on, why you decided to prioritize your health, a favorite wellness routine, or what you\'re excited to accomplish in the next 30 days.', s: ['One thing I\'ve realized lately is how important it is to prioritize my health. I\'m excited to stay consistent, learn new habits, and see what\'s possible over the next few months. What\'s one health goal you\'re working toward?'] },
+        launchEvent: { t: 'Hold your launch event', d: 'Host it with your Sponsor and share your excitement. If your event falls on a different day, check this off when it happens.' },
+        eventFollow: { t: 'Follow up with everyone from your launch event', d: 'Thank each guest for coming, ask what stood out to them, and offer to answer questions.', s: ['Thank you so much for coming to my launch event! What stood out to you most?'] },
+        training: { t: 'Join a live training call', d: 'Find upcoming calls and events on the Plexus Training Hub, and invite a friend.', link: 'hub' },
+        secondEvent: { t: 'Host a second event', d: 'Try a different format from your launch event, such as a small wellness gathering or a virtual product chat. Plan it with your Sponsor.' },
+        care: { t: 'Check in with every new customer', d: 'Ask how they\'re feeling, whether they\'ve started their products, and how the products fit into their routine.', s: ['Hi! I wanted to check in and see how you\'re doing. Have you had a chance to start your products yet? Let me know if you have any questions. I\'m here to help!', 'What goal are you most excited about achieving?'] },
+        goals: { t: 'Note each customer\'s goals', d: 'Keep a simple note of each customer\'s goals so your check-ins stay personal.' },
+        spot: { t: 'Notice who might want to share alongside you', d: 'Look for people who love sharing recommendations, have strong relationships, enjoy helping others, or ask about earning income. Many successful Ambassadors started as happy customers.' },
+        warm: { t: 'Reach back out to {n} of your warmest prospects', d: 'Help people who\'ve shown interest take the next step.', s: ['You mentioned your goal is ______. I believe Plexus could be a great fit for you. Would you like me to help you get started?'] },
+        rereadWhy: { t: 'Re-read your why', d: 'Go back to what you wrote on Day 0. Every conversation moves you closer to it.' },
+        identify: { t: 'Identify someone who might want to become a Brand Ambassador', d: 'Think of someone who loves encouraging others, gets excited about wellness, would appreciate an extra income opportunity, or enjoys sharing things they love.' },
+        opportunity: { t1: 'Have 1 opportunity conversation', t: 'Have {n} opportunity conversations', d: 'Talk with your Sponsor first for best practices; they can join you.', s: ['I\'ve loved sharing this with you. Have you ever thought about earning extra income by sharing products you enjoy?'] },
+        learnBlock: { t: 'Learn how Business Blocks work in RightStart', d: 'See how VIP Customers and new Brand Ambassadors come together into Business Blocks, and talk it through with your Sponsor.', link: 'rightstart' },
+        sponsorCheck: { t: 'Check in with your Sponsor', d: 'Share what\'s working, ask your questions, and send them your progress link.' },
+        growList: { t: 'Add {n} names to your list', d: 'Keep your list growing with people you\'ve met, reconnected with, or seen engage with your posts.' },
+        learn: { t: 'Take a product or business training', d: 'Pick a training on the Plexus Training Hub to build your confidence.', link: 'hub' },
+        planNext: { t: 'Plan your next month with your Sponsor', d: 'Look back at your 21 days, celebrate what went well, and set your goals and weekly rhythm for next month.' },
+        survey: { t: 'Complete the Plexus U survey for your certificate', d: 'Watch for your final Plexus U: Getting Started email with the survey link. Once you complete it, you\'ll receive your Certificate of Completion.', dLink: 'Complete the survey to receive your Plexus U: Getting Started Certificate of Completion.' },
+        celebrate: { t: 'Celebrate your first 21 days', d: 'Share a post about what you\'ve learned, and thank the people who\'ve supported you.' }
+      }
+    },
+
+    es: {
+      title: 'Plexus U: Primeros pasos | Plexus',
+      skip: 'Ir a tu plan',
+      eyebrow: 'Para nuevos Embajadores de Marca',
+      h1: 'Plexus U: Primeros pasos',
+      sub: 'Tus primeros 21 días como Embajador de Marca, planeados según el tiempo que tienes.',
+      'nav.lang': 'Idioma', 'nav.label': 'Secciones', close: 'Cerrar',
+      'nav.day': 'Tu día', 'nav.plan': 'Diarios', 'nav.say': 'Qué decir', 'nav.res': 'Recursos', 'nav.share': 'Comparte con tu Patrocinador',
+      'setup.h': 'Paso 1: Elige tu ritmo',
+      'setup.lede': '¿Cuánto tiempo puedes dedicar a tu negocio cada semana? Todos alcanzan las mismas metas; tu ritmo define cuánto haces de cada actividad. Puedes cambiarlo cuando quieras.',
+      pace: {
+        walk: { name: 'Caminar', hours: 'Hasta 10 horas a la semana', day: 'Alrededor de 1 hora al día, 6 días a la semana' },
+        jog: { name: 'Trotar', hours: 'De 10 a 15 horas a la semana', day: 'Unas 2 horas al día, 6 días a la semana', tag: 'Recomendado' },
+        run: { name: 'Correr', hours: 'De 20 a 40 horas a la semana', day: 'Entre 3 y 6 horas al día, 6 días a la semana' }
+      },
+      'setup.start': 'Tu fecha de inicio (Día 0)',
+      'setup.startHelp': 'El día en que te convertiste en Embajador de Marca, o el día en que comienzas este plan.',
+      'setup.name': 'Tu nombre (opcional)',
+      'setup.nameHelp': 'Aparece en el enlace que compartes con tu Patrocinador.',
+      ms: {
+        launch: 'Lanza tu negocio', open: '¡Tu negocio está abierto!', convo: 'Convierte el interés en conversaciones', catch: 'Ponte al día y planea',
+        paid: 'Prepárate para recibir pagos', care: 'Un excelente servicio al cliente', first: 'Ayuda a tus primeros clientes a comenzar',
+        block: '¿Quién quiere compartir contigo?', done: 'Completa Plexus U', keep: 'Mantén el impulso'
+      },
+      weeks: ['Semana 1: Lanzamiento', 'Semana 2: Conecta y cuida', 'Semana 3: Haz crecer tu equipo'],
+      dayN: n => `Día ${n}`,
+      'day.of': n => `Día ${n} de 21`,
+      'day.before': d => `Tu plan comienza el ${d}. Aquí tienes una vista previa del Día 0.`,
+      'day.after': 'Llegaste al final de tus primeros 21 días. Este es tu último día; completa lo que te haya faltado en el plan de abajo.',
+      'day.today': 'Hoy',
+      'day.prev': 'Día anterior', 'day.next': 'Día siguiente', 'day.back': 'Volver a hoy',
+      'day.time': m => `Unos ${m} hoy`,
+      'day.done': (a, b) => `${a} de ${b} completadas`,
+      'day.all': 'Completaste todo lo de este día. ¡Buen trabajo!',
+      'day.choose': 'Elige tu ritmo en el Paso 1 para ver tu plan.',
+      mins: m => m < 60 ? `${m} min` : (m % 60 ? `${Math.floor(m / 60)} h ${m % 60} min` : `${m / 60} h`),
+      'act.say': 'Qué decir', 'act.how': 'Cómo hacerlo', 'act.open': 'Abrir',
+      'plan.h': 'Tus 21 días',
+      'plan.lede': (p, h) => `Tu ritmo: ${p} (${h.toLowerCase()}). Selecciona cualquier día para ver sus actividades.`,
+      'plan.week': h => `unas ${h}`,
+      'plan.print': 'Imprimir mi plan',
+      tally: { conv: 'conversaciones iniciadas', follow: 'seguimientos', invites: 'invitaciones al evento', posts: 'publicaciones' },
+      'say.h': 'Qué decir',
+      'say.lede': 'En cualquier invitación a probar Plexus, comparte estas cuatro cosas. Hazlo personal y sencillo.',
+      four: ['Por qué decidiste comenzar con Plexus', 'Lo que te entusiasma', 'Quién te habló de Plexus y por qué lo probaste', 'Una invitación a probarlo o a acompañarte en el camino'],
+      'say.faqH': 'Preguntas más comunes',
+      'own.h': 'Hazlo tuyo',
+      'own.p': 'Estas palabras son un punto de partida, no un guion para leer al pie de la letra. Úsalas como plantilla y hazlas tuyas: tu historia, tus palabras, tu voz.',
+      faq: [
+        ['¿Qué es Plexus?', 'Plexus es pionera en salud intestinal, con innovación a través de fórmulas patentadas y rigurosas pruebas de terceros que apoyan el bienestar de todo el cuerpo desde el interior. Desde salud intestinal, control de peso, cuidado de la piel, estilo de vida activo y cuidado personal hasta la salud y el bienestar en general, los productos Plexus nutren tu sistema para beneficiar el cuerpo y la mente. Los productos Plexus no contienen OGM ni sabores, colores, conservantes o endulzantes artificiales.'],
+        ['¿Cuánto cuesta?', 'Los precios actualizados de los productos están en tu sitio web de Plexus.'],
+        ['¿Cuánto duran los productos Plexus?', 'Los productos Plexus normalmente vienen en un suministro para 30 días y tienen una vida útil de dos años. Consulta la hoja de información de cada producto para conocer la porción recomendada y el empaque.'],
+        ['¿Los productos Plexus reemplazan las comidas?', 'No. Plexus está pensado para complementar tu estilo de vida, no para que te saltes comidas ni para promover hábitos poco saludables.'],
+        ['¿Los productos Plexus son naturales?', 'Plexus no usa colores, sabores, conservantes ni endulzantes artificiales, y cumple con las regulaciones de etiquetado en EE. UU. y a nivel mundial. No existe una definición consistente o confiable de "natural" o "sintético", y las agencias reguladoras no ofrecen una. Plexus se enfoca en cumplir o superar todos los estándares objetivos de calidad y seguridad, y se asegura de que sus etiquetas incluyan todos los ingredientes activos del producto.']
+      ],
+      fda: '*Estas declaraciones no han sido evaluadas por la Administración de Alimentos y Medicamentos (FDA). Este producto no está destinado a diagnosticar, tratar, curar ni prevenir ninguna enfermedad.',
+      'res.h': 'Recursos',
+      'res.lede': 'Todo lo que se enlaza en tu plan, en un solo lugar.',
+      res: [
+        ['rightstart', 'Cómo funciona RightStart', 'Descubre cómo se forman los Bloques de Negocio y cómo funciona RightStart.'],
+        ['academy', 'New Ambassadors Academy', 'El grupo de Facebook para nuevos Embajadores de Marca.'],
+        ['boards', 'El Board de Plexus en Boards', 'Abre la carpeta "New to Plexus? Start here".'],
+        ['hub', 'Plexus Training Hub', 'Próximas capacitaciones, llamadas en vivo y eventos.'],
+        ['guide', 'Guía para comenzar', 'Invita a alguien a acompañarte en 3 sencillos pasos.'],
+        ['cart', 'Cómo crear un enlace de carrito', 'Crea y guarda tus dos enlaces de carrito.'],
+        ['howShare', 'Guía para compartir', 'Ideas para compartir tu historia.'],
+        ['whoShare', 'Con quién y cómo compartir', 'Más ejemplos de con quién y cómo compartir.'],
+        ['sharing', 'Compartir Plexus', 'Productos, comunidad y cómo compartir en redes sociales.'],
+        ['join', 'Cómo unirse a Plexus', 'La página para quienes quieren unirse.']
+      ],
+      'res.podcast': 'Podcast de Plexus U', 'res.podcastSoon': 'Los episodios llegarán pronto. Aparecerán en tu plan cuando estén listos.',
+      'share.h': 'Comparte con tu Patrocinador',
+      'share.lede': 'Tu Patrocinador te acompaña durante estos 21 días. Envíale un enlace a tu plan para que vea tu progreso y te anime.',
+      'share.p1': 'El enlace muestra tu progreso en el momento en que lo creas. Comparte un enlace nuevo cada vez que quieras hacer un seguimiento.',
+      'share.p2': 'Tu progreso se guarda solo en este navegador. Usa el mismo teléfono o computadora para seguir marcando tus actividades.',
+      'share.btn': 'Crear mi enlace para el Patrocinador', 'share.copy': 'Copiar enlace',
+      'share.copied': 'Enlace copiado. Pégalo en un mensaje para tu Patrocinador.',
+      'share.needPace': 'Primero elige tu ritmo en el Paso 1 y luego regresa para crear tu enlace.',
+      'share.local': 'Aviso: estás viendo una vista previa o una copia guardada en una computadora, así que este enlace solo funciona aquí. Cuando la guía esté publicada en el sitio web, los enlaces se abrirán para tu Patrocinador.',
+      'share.text': n => `Plan de Plexus U: Primeros pasos${n ? ' de ' + n : ''}`,
+      'sp.text': (n, d, day, done, total) => `<strong>Vista del Patrocinador.</strong> Plan${n ? ' de ' + n : ''}, compartido el ${d}: Día ${day}, ${done} de ${total} actividades completadas. Es una instantánea; pide un enlace nuevo para ver actualizaciones.`,
+      'sp.exit': 'Planear mis propios 21 días',
+      'sp.before': d => `Este plan comienza el ${d}.`,
+      'sp.pace': (p, h, d) => `Ritmo: ${p} (${h.toLowerCase()}) · Comenzó el ${d}`,
+      'sp.day': n => n ? `El día de ${n}` : 'Su día',
+      'sp.plan': n => n ? `Los 21 días de ${n}` : 'Sus 21 días',
+      'sp.planLede': 'Selecciona cualquier día para ver sus actividades y lo que ya está completado.',
+      'sp.after': 'Este plan llegó al final de los primeros 21 días. Este es el último día.',
+      'sp.print': 'Imprimir este plan',
+      'print.sub': (p, d) => `Ritmo: ${p} · Fecha de inicio: ${d}`,
+      'print.foot': 'El progreso corresponde al día en que se imprimió este plan.',
+      disclaimer: `Plexus no ofrece garantías de ingresos ni ganancias. Los ingresos y beneficios personales varían. Tu éxito depende del volumen de ventas, el esfuerzo, el compromiso, la capacidad de liderazgo, las condiciones económicas y del mercado, y los gastos incurridos en la operación de tu negocio. En 2025, el ingreso anual promedio de todos los Embajadores fue de 780 USD. Para más detalles, consulta la <a href="${IDS}" target="_blank" rel="noopener">Declaración Anual de Ingresos de Plexus</a>.`,
+      podcast: {
+        1: 'Tus primeros 30 días', 2: 'Tu historia importa', 3: 'Las conexiones generan impulso', 4: 'Organizar eventos', 5: 'De cliente a comunidad'
+      },
+      podcastT: (n, name) => `Escucha: Podcast de Plexus U, episodio ${n}: ${name}`,
+      podcastSoon: 'Muy pronto',
+      act: {
+        sponsor0: { t: 'Conéctate con tu Patrocinador', d: 'Comparte tu porqué, acuerden cómo se mantendrán en contacto y planeen juntos tu evento de lanzamiento.' },
+        why: { t: 'Escribe tu porqué y tu visión a 6 meses', d: 'Responde dos preguntas: ¿Por qué decidí convertirme en Embajador de Marca de Plexus? ¿Cómo se vería el éxito dentro de 6 meses? Invita a tu familia a participar o haz un tablero de visión, y comparte tus respuestas con tu Patrocinador.' },
+        names: { t: 'Haz una lista de al menos {n} nombres', d: 'Amigos, compañeros de trabajo, amigos de la familia, vecinos, contactos de redes sociales y personas interesadas en el bienestar. ¿No sabes por dónde empezar? Mira tu publicación con más "me gusta" y fíjate quién interactuó. No decidas por nadie; solo escribe nombres.' },
+        carts: { t: 'Crea tus dos enlaces de carrito', d: 'Carrito 1: Gut Health System. Carrito 2: Gut Health System más dos productos que se ajusten a metas comunes. Guarda ambos enlaces en un lugar fácil de compartir, como una app de notas en tu teléfono.', link: 'cart' },
+        eventDate: { t: 'Programa tu evento de lanzamiento', d: 'En tus primeras 24 a 48 horas, elige una fecha con tu Patrocinador, aproximadamente dentro de una semana. Elige el formato con el que te sientas más cómodo: en persona, por Zoom o por Messenger de Facebook o Instagram. ¡Piénsalo como tu inauguración!' },
+        boards: { t: 'Únete a Boards y al Board de Plexus', d: 'Descarga Boards (tiene una opción de cuenta gratuita), únete al Board de Plexus y abre la carpeta "New to Plexus? Start here".', link: 'boards' },
+        academy: { t: 'Únete a la New Ambassadors Academy', d: 'Conéctate a la Plexus New Ambassadors Academy en Facebook.', link: 'academy' },
+        invite4: { t: 'Envía un mensaje a {n} personas con quienes te encantaría probar Plexus', d: 'Comparte por qué comenzaste, lo que te entusiasma, quién te habló de Plexus y una invitación a acompañarte.', s: ['¡Hola, Sofía! Espero que estés muy bien. Hace poco empecé a tomar unos suplementos para la salud intestinal increíbles y han hecho una gran diferencia. Si te interesa, me encantaría enviarte información.', '¡Hola, Sofía! Estoy muy emocionada. Acabo de pedir unos productos para la salud intestinal que a mi amiga Laura le han dado excelentes resultados. Me encantaría hacerlo con una amiga. Te puedo enviar información.'] },
+        eventInvite: { t: 'Invita a {n} personas a tu evento de lanzamiento', d: 'Prueba enviar notas de voz. Le dan un toque personal y transmiten tu entusiasmo.', s: ['¡Hola! Hace poco me asocié con Plexus y voy a organizar mi primer evento para compartir lo que estoy aprendiendo. Me encantaría que me acompañaras para apoyarme en el lanzamiento de mi negocio.'] },
+        subscription: { t: 'Asegúrate de que tu Pedido de Suscripción esté activo', d: 'Tu suscripción te mantiene elegible para ganar comisiones y garantiza que siempre tengas tus productos favoritos. Más adelante, ayuda a tus primeros clientes y Embajadores de Marca a revisar la suya.' },
+        conv: { t: 'Inicia {n} conversaciones', d: 'Comunícate con personas que conoces y que podrían estar interesadas en mejorar su salud, su energía, su control de peso o su bienestar en general. Haz preguntas y escucha. Cuando alguien muestre interés, conoce sus metas.', s: ['Estoy muy entusiasmada con algunos cambios que estoy haciendo en mi camino hacia una mejor salud. Vi en tu publicación reciente que tú también estás trabajando en tu salud. ¿Qué te hizo decidir que este es el momento de empezar de nuevo?'] },
+        follow: { t: 'Da seguimiento a {n} personas', d: 'Responde a todos los que contestaron, reaccionaron, comentaron o hicieron una pregunta. Continúa la conversación por mensaje de texto o mensaje directo para responder preguntas y conocer sus metas.', s: ['Quería saber si tienes alguna pregunta sobre los productos o tus metas. Con gusto te ayudo en lo que pueda.'] },
+        firstPost: { t: 'Haz tu primera publicación', d: 'Comparte por qué estás emocionado, por qué comenzaste y tus metas, e invita a otros a seguir tu camino. Usa una foto clara, sé tú mismo, haz la publicación pública y etiqueta a tu Patrocinador para que te ayude a darle alcance.', s: ['Estoy cansada de sentirme ______. Mi camino para cambiarlo comienza hoy. Estoy emocionada de enfocarme en mi salud y bienestar y ver a dónde me lleva este camino. ¿Alguien más está trabajando en sus metas de salud y quiere acompañarme?'], link: 'howShare' },
+        replies: { t: 'Responde comentarios y mensajes', d: 'Si alguien pregunta qué es Plexus, comparte un poco y luego pregunta por sus metas. Identifícate con lo que te cuenta, pregunta cómo le afecta en su día y ofrece información y respuestas.', s: ['Plexus es una empresa de salud y bienestar especializada en productos para la salud intestinal para cada necesidad. ¿Cuáles son algunas de tus metas de salud?', '¿Cómo te afecta eso en tu día?', '¿Crees que estos productos podrían ayudarte con tus metas de salud?'] },
+        family: { t: 'Acuerda con tu familia tus horarios de trabajo', d: 'Elige los horarios que dedicarás a tu negocio cada semana, a tu ritmo de {h}. Proteger ese tiempo te ayuda a mantenerte enfocado.' },
+        cartSend: { t: 'Envía un enlace de carrito a quien esté listo para probar', d: 'Cuando conozcas las metas de alguien, envía el enlace de carrito que mejor le quede. Lo hace sencillo y facilita comenzar.', s: ['Con base en lo que me contaste, preparé un carrito recomendado para facilitarte las cosas. Échale un vistazo y dime qué te emociona probar.'], link: 'cart' },
+        remind: { t: 'Recuérdales a tus invitados tu evento de lanzamiento', d: 'Confirma la hora y cómo conectarse, y agradéceles su apoyo.', s: ['¡Qué emoción verte en mi evento de lanzamiento! Aquí está otra vez la hora y el enlace. ¡Gracias por apoyarme!'] },
+        catchup: { t: 'Ponte al día y planea', d: 'Termina lo que te haya faltado esta semana y revisa lo que viene la próxima.' },
+        plexusPay: { t: 'Activa tu cuenta de Plexus Pay', d: 'Busca el correo que recibiste en tu primer día con las instrucciones. Al activarla, estarás listo para recibir comisiones y bonos.' },
+        post: { t: 'Comparte otra publicación sobre tu camino', d: 'Ideas: un hábito saludable en el que estás trabajando, por qué decidiste priorizar tu salud, tu rutina de bienestar favorita o lo que te emociona lograr en los próximos 30 días.', s: ['Algo de lo que me he dado cuenta últimamente es lo importante que es priorizar mi salud. Estoy emocionada de ser constante, aprender nuevos hábitos y ver lo que es posible en los próximos meses. ¿Cuál es una meta de salud en la que estás trabajando?'] },
+        launchEvent: { t: 'Realiza tu evento de lanzamiento', d: 'Organízalo con tu Patrocinador y comparte tu entusiasmo. Si tu evento es otro día, márcalo cuando suceda.' },
+        eventFollow: { t: 'Da seguimiento a todos los asistentes a tu evento', d: 'Agradece a cada invitado por asistir, pregúntale qué le llamó más la atención y ofrécete a responder sus preguntas.', s: ['¡Muchas gracias por venir a mi evento de lanzamiento! ¿Qué fue lo que más te llamó la atención?'] },
+        training: { t: 'Únete a una capacitación en vivo', d: 'Encuentra próximas llamadas y eventos en el Plexus Training Hub e invita a alguien.', link: 'hub' },
+        secondEvent: { t: 'Organiza un segundo evento', d: 'Prueba un formato distinto al de tu lanzamiento, como una pequeña reunión de bienestar o una charla virtual sobre los productos. Planéalo con tu Patrocinador.' },
+        care: { t: 'Comunícate con cada cliente nuevo', d: 'Pregúntale cómo se siente, si ya comenzó con sus productos y cómo se integran en su rutina.', s: ['¡Hola! Quería saber cómo estás. ¿Ya pudiste comenzar con tus productos? Si tienes alguna pregunta, avísame. ¡Estoy aquí para ayudarte!', '¿Qué meta te emociona más lograr?'] },
+        goals: { t: 'Anota las metas de cada cliente', d: 'Lleva una nota sencilla de las metas de cada cliente para que tus seguimientos sean personales.' },
+        spot: { t: 'Identifica a quién le podría interesar compartir contigo', d: 'Fíjate en las personas a quienes les encanta recomendar, tienen buenas relaciones, disfrutan ayudar a otros o preguntan sobre ganar ingresos. Muchos Embajadores exitosos empezaron como clientes satisfechos.' },
+        warm: { t: 'Vuelve a contactar a {n} de tus prospectos más interesados', d: 'Ayuda a quienes mostraron interés a dar el siguiente paso.', s: ['Me dijiste que tu meta es ______. Creo que Plexus podría ser ideal para ti. ¿Te gustaría que te ayudara a comenzar?'] },
+        rereadWhy: { t: 'Vuelve a leer tu porqué', d: 'Regresa a lo que escribiste el Día 0. Cada conversación te acerca a esa meta.' },
+        identify: { t: 'Identifica a alguien que podría querer ser Embajador de Marca', d: 'Piensa en alguien a quien le encanta animar a los demás, que se entusiasma con el bienestar, que agradecería una oportunidad de ingresos adicionales o que disfruta compartir lo que le gusta.' },
+        opportunity: { t1: 'Ten 1 conversación sobre la oportunidad', t: 'Ten {n} conversaciones sobre la oportunidad', d: 'Habla primero con tu Patrocinador para conocer las mejores prácticas; puede acompañarte.', s: ['Me ha encantado compartir esto contigo. ¿Alguna vez has pensado en ganar ingresos adicionales compartiendo productos que te gustan?'] },
+        learnBlock: { t: 'Aprende cómo funcionan los Bloques de Negocio en RightStart', d: 'Descubre cómo los Clientes VIP y los nuevos Embajadores de Marca se combinan para formar Bloques de Negocio, y coméntalo con tu Patrocinador.', link: 'rightstart' },
+        sponsorCheck: { t: 'Comunícate con tu Patrocinador', d: 'Cuéntale lo que está funcionando, haz tus preguntas y envíale el enlace de tu progreso.' },
+        growList: { t: 'Agrega {n} nombres a tu lista', d: 'Sigue haciendo crecer tu lista con personas que conociste, con quienes retomaste contacto o que interactuaron con tus publicaciones.' },
+        learn: { t: 'Toma una capacitación sobre productos o negocio', d: 'Elige una capacitación en el Plexus Training Hub para ganar confianza.', link: 'hub' },
+        planNext: { t: 'Planea tu próximo mes con tu Patrocinador', d: 'Repasa tus 21 días, celebra lo que salió bien y define tus metas y tu ritmo semanal para el próximo mes.' },
+        survey: { t: 'Completa la encuesta de Plexus U para obtener tu certificado', d: 'Busca tu último correo de Plexus U: Primeros pasos con el enlace a la encuesta. Al completarla, recibirás tu Certificado de Finalización.', dLink: 'Completa la encuesta para recibir tu Certificado de Finalización de Plexus U: Primeros pasos.' },
+        celebrate: { t: 'Celebra tus primeros 21 días', d: 'Comparte una publicación sobre lo que has aprendido y agradece a quienes te han apoyado.' }
+      }
+    },
+
+    fr: {
+      title: 'Plexus U : Premiers pas | Plexus',
+      skip: 'Aller à votre plan',
+      eyebrow: 'Pour les nouveaux ambassadeurs de marque',
+      h1: 'Plexus U : Premiers pas',
+      sub: 'Vos 21 premiers jours comme ambassadeur de marque, planifiés selon le temps dont vous disposez.',
+      'nav.lang': 'Langue', 'nav.label': 'Sections', close: 'Fermer',
+      'nav.day': 'Votre journée', 'nav.plan': 'Quotidiens', 'nav.say': 'Quoi dire', 'nav.res': 'Ressources', 'nav.share': 'Partager avec votre parrain',
+      'setup.h': 'Étape 1 : Choisissez votre rythme',
+      'setup.lede': 'Combien de temps pouvez-vous consacrer à votre entreprise chaque semaine? Tout le monde franchit les mêmes étapes; votre rythme détermine la quantité de chaque activité. Vous pouvez le changer en tout temps.',
+      pace: {
+        walk: { name: 'Marcher', hours: "Jusqu'à 10 heures par semaine", day: 'Environ 1 heure par jour, 6 jours par semaine' },
+        jog: { name: 'Trotter', hours: '10 à 15 heures par semaine', day: 'Environ 2 heures par jour, 6 jours par semaine', tag: 'Recommandé' },
+        run: { name: 'Courir', hours: '20 à 40 heures par semaine', day: 'Environ 3 à 6 heures par jour, 6 jours par semaine' }
+      },
+      'setup.start': 'Votre date de début (jour 0)',
+      'setup.startHelp': 'Le jour où vous êtes devenu ambassadeur de marque, ou le jour où vous commencez ce plan.',
+      'setup.name': 'Votre prénom (facultatif)',
+      'setup.nameHelp': 'Affiché sur le lien que vous partagez avec votre parrain.',
+      ms: {
+        launch: 'Lancez votre entreprise', open: 'Votre entreprise est ouverte!', convo: "Transformez l'intérêt en conversations", catch: 'Faites le point et préparez la suite',
+        paid: 'Préparez-vous à être payé', care: 'Un excellent service à la clientèle', first: 'Aidez vos premiers clients à commencer',
+        block: 'Qui veut partager avec vous?', done: 'Terminez Plexus U', keep: "Gardez l'élan"
+      },
+      weeks: ['Semaine 1 : Lancement', 'Semaine 2 : Créer des liens et prendre soin', 'Semaine 3 : Faire grandir votre équipe'],
+      dayN: n => `Jour ${n}`,
+      'day.of': n => `Jour ${n} sur 21`,
+      'day.before': d => `Votre plan commence le ${d}. Voici un aperçu du jour 0.`,
+      'day.after': 'Vous avez terminé vos 21 premiers jours. Voici votre dernière journée; complétez ce qui vous manque dans le plan ci-dessous.',
+      'day.today': "Aujourd'hui",
+      'day.prev': 'Jour précédent', 'day.next': 'Jour suivant', 'day.back': "Revenir à aujourd'hui",
+      'day.time': m => `Environ ${m} aujourd'hui`,
+      'day.done': (a, b) => `${a} sur ${b} terminées`,
+      'day.all': 'Tout est fait pour cette journée. Bravo!',
+      'day.choose': "Choisissez votre rythme à l'étape 1 pour voir votre plan.",
+      mins: m => m < 60 ? `${m} min` : (m % 60 ? `${Math.floor(m / 60)} h ${m % 60}` : `${m / 60} h`),
+      'act.say': 'Quoi dire', 'act.how': 'Comment faire', 'act.open': 'Ouvrir',
+      'plan.h': 'Vos 21 jours',
+      'plan.lede': (p, h) => `Votre rythme : ${p} (${h.charAt(0).toLowerCase() + h.slice(1)}). Sélectionnez une journée pour voir ses activités.`,
+      'plan.week': h => `environ ${h}`,
+      'plan.print': 'Imprimer mon plan',
+      tally: { conv: 'conversations amorcées', follow: 'suivis', invites: "invitations à l'événement", posts: 'publications' },
+      'say.h': 'Quoi dire',
+      'say.lede': "Dans toute invitation à essayer Plexus, partagez ces quatre éléments. Restez personnel et simple.",
+      four: ['Pourquoi vous avez décidé de commencer Plexus', "Ce qui vous enthousiasme", "Qui vous a parlé de Plexus et pourquoi vous l'avez essayé", "Une invitation à l'essayer ou à vous accompagner dans l'aventure"],
+      'say.faqH': 'Questions les plus fréquentes',
+      'own.h': 'Faites-le à votre façon',
+      'own.p': 'Ces mots sont un point de départ, pas un texte à lire mot pour mot. Utilisez-les comme modèle et faites-les vôtres : votre histoire, vos mots, votre voix.',
+      faq: [
+        ["Qu'est-ce que Plexus?", "Plexus est un pionnier de la santé intestinale qui innove grâce à des formules brevetées et à des tests rigoureux effectués par des tiers, pour soutenir le bien-être de tout le corps, de l'intérieur. De la santé intestinale à la gestion du poids, en passant par les soins de la peau, le mode de vie actif et les soins personnels, jusqu'à la santé et au bien-être en général, les produits Plexus nourrissent votre organisme au bénéfice du corps et de l'esprit. Les produits Plexus sont sans OGM et sans arômes, colorants, agents de conservation ni édulcorants artificiels."],
+        ['Combien ça coûte?', 'Les prix à jour des produits se trouvent sur votre site Web Plexus.'],
+        ['Combien de temps durent les produits Plexus?', "Les produits Plexus sont généralement offerts en format de 30 jours et ont une durée de conservation de deux ans. Consultez la fiche d'information de chaque produit pour connaître la portion recommandée et l'emballage."],
+        ['Les produits Plexus remplacent-ils les repas?', "Non. Plexus est conçu pour compléter votre mode de vie, et non pour vous faire sauter des repas ou encourager de mauvaises habitudes."],
+        ['Les produits Plexus sont-ils naturels?', "Plexus n'utilise aucun colorant, arôme, agent de conservation ni édulcorant artificiel, et respecte la réglementation sur l'étiquetage aux États-Unis et ailleurs dans le monde. Il n'existe pas de définition constante ou fiable des termes « naturel » ou « synthétique », et les organismes de réglementation n'en fournissent pas. Plexus s'efforce de respecter ou de dépasser toutes les normes objectives de qualité et de sécurité, et veille à ce que ses étiquettes indiquent tous les ingrédients actifs du produit."]
+      ],
+      fda: "*Ces énoncés n'ont pas été évalués par la Food and Drug Administration. Ce produit n'est pas destiné à diagnostiquer, traiter, guérir ou prévenir une maladie.",
+      'res.h': 'Ressources',
+      'res.lede': 'Tous les liens de votre plan, au même endroit.',
+      res: [
+        ['rightstart', 'Comment fonctionne RightStart', "Découvrez comment se forment les Blocs d'affaires et comment fonctionne RightStart."],
+        ['academy', 'New Ambassadors Academy', 'Le groupe Facebook des nouveaux ambassadeurs de marque.'],
+        ['boards', 'Le Board Plexus sur Boards', 'Ouvrez le dossier « New to Plexus? Start here ».'],
+        ['hub', 'Plexus Training Hub', 'Formations, appels en direct et événements à venir.'],
+        ['guide', 'Guide pour commencer', "Invitez quelqu'un à vous accompagner en 3 étapes simples."],
+        ['cart', 'Comment créer un lien de panier', 'Créez et enregistrez vos deux liens de panier.'],
+        ['howShare', 'Guide pour partager', 'Des idées pour partager votre histoire.'],
+        ['whoShare', 'Avec qui et comment partager', "D'autres exemples d'avec qui et comment partager."],
+        ['sharing', 'Partager Plexus', 'Produits, communauté et partage sur les réseaux sociaux.'],
+        ['join', 'Comment se joindre à Plexus', 'La page pour les personnes qui veulent se joindre.']
+      ],
+      'res.podcast': 'Balado Plexus U', 'res.podcastSoon': "Les épisodes arrivent bientôt. Ils apparaîtront dans votre plan dès qu'ils seront prêts.",
+      'share.h': 'Partager avec votre parrain',
+      'share.lede': "Votre parrain vous accompagne pendant ces 21 jours. Envoyez-lui un lien vers votre plan pour qu'il voie vos progrès et vous encourage.",
+      'share.p1': "Le lien montre vos progrès au moment où vous le créez. Partagez un nouveau lien chaque fois que vous voulez faire le point.",
+      'share.p2': 'Vos progrès sont enregistrés dans ce navigateur seulement. Utilisez le même téléphone ou ordinateur pour continuer à cocher vos activités.',
+      'share.btn': 'Créer mon lien pour mon parrain', 'share.copy': 'Copier le lien',
+      'share.copied': 'Lien copié. Collez-le dans un message à votre parrain.',
+      'share.needPace': "Choisissez d'abord votre rythme à l'étape 1, puis revenez créer votre lien.",
+      'share.local': "À noter : vous consultez un aperçu ou une copie enregistrée sur un ordinateur, alors ce lien ne fonctionne qu'ici. Une fois le guide publié sur le site Web, les liens s'ouvriront pour votre parrain.",
+      'share.text': n => `Plan Plexus U : Premiers pas${n ? ' de ' + n : ''}`,
+      'sp.text': (n, d, day, done, total) => `<strong>Vue du parrain.</strong> Plan${n ? ' de ' + n : ''}, partagé le ${d} : jour ${day}, ${done} activités sur ${total} terminées. Il s'agit d'un instantané; demandez un nouveau lien pour voir les mises à jour.`,
+      'sp.exit': 'Planifier mes propres 21 jours',
+      'sp.before': d => `Ce plan commence le ${d}.`,
+      'sp.pace': (p, h, d) => `Rythme : ${p} (${h.charAt(0).toLowerCase() + h.slice(1)}) · Début le ${d}`,
+      'sp.day': n => n ? `La journée ${/^[aeiouyhàâäéèêëîïôöûü]/i.test(n) ? 'd’' : 'de '}${n}` : 'Sa journée',
+      'sp.plan': n => n ? `Les 21 jours ${/^[aeiouyhàâäéèêëîïôöûü]/i.test(n) ? 'd’' : 'de '}${n}` : 'Ses 21 jours',
+      'sp.planLede': 'Sélectionnez une journée pour voir ses activités et ce qui a été coché.',
+      'sp.after': 'Ce plan a atteint la fin des 21 premiers jours. Voici la dernière journée.',
+      'sp.print': 'Imprimer ce plan',
+      'print.sub': (p, d) => `Rythme : ${p} · Date de début : ${d}`,
+      'print.foot': "Les progrès sont ceux du jour où ce plan a été imprimé.",
+      disclaimer: `Plexus ne garantit aucun revenu ni profit. Les gains et profits personnels varient. Votre réussite dépend du volume de ventes, des efforts, de l'engagement, des capacités de leadership, de la conjoncture économique et du marché, ainsi que des dépenses engagées pour exploiter votre entreprise. En 2025, les gains annuels moyens de l'ensemble des ambassadeurs étaient de 780 USD. Pour plus de détails, consultez la <a href="${IDS}" target="_blank" rel="noopener">Déclaration annuelle des revenus de Plexus</a>.`,
+      podcast: {
+        1: 'Vos 30 premiers jours', 2: 'Votre histoire compte', 3: "Les liens créent l'élan", 4: 'Organiser des événements', 5: 'De client à communauté'
+      },
+      podcastT: (n, name) => `À écouter : balado Plexus U, épisode ${n} : ${name}`,
+      podcastSoon: 'Bientôt',
+      act: {
+        sponsor0: { t: 'Communiquez avec votre parrain', d: 'Partagez votre pourquoi, convenez de la façon de rester en contact et planifiez ensemble votre événement de lancement.' },
+        why: { t: 'Écrivez votre pourquoi et votre vision à 6 mois', d: "Répondez à deux questions : Pourquoi ai-je décidé de devenir ambassadeur de marque Plexus? À quoi ressemblerait la réussite dans 6 mois? Invitez votre famille à participer ou créez un tableau de visualisation, puis partagez vos réponses avec votre parrain." },
+        names: { t: 'Dressez une liste d\'au moins {n} noms', d: "Amis, collègues, amis de la famille, voisins, contacts sur les réseaux sociaux et personnes qui s'intéressent au bien-être. Vous ne savez pas par où commencer? Regardez votre publication la plus aimée et voyez qui a réagi. Ne décidez pour personne; écrivez simplement des noms." },
+        carts: { t: 'Créez vos deux liens de panier', d: "Panier 1 : Gut Health System. Panier 2 : Gut Health System et deux produits adaptés aux objectifs courants. Enregistrez les deux liens dans un endroit facile à partager, comme une application de notes sur votre téléphone.", link: 'cart' },
+        eventDate: { t: 'Planifiez votre événement de lancement', d: "Au cours de vos 24 à 48 premières heures, choisissez une date avec votre parrain, environ une semaine plus tard. Choisissez le format qui vous convient le mieux : en personne, sur Zoom, ou par Messenger de Facebook ou d'Instagram. Voyez-le comme votre inauguration!" },
+        boards: { t: 'Rejoignez Boards et le Board Plexus', d: 'Téléchargez Boards (une option de compte gratuit est offerte), rejoignez le Board Plexus et ouvrez le dossier « New to Plexus? Start here ».', link: 'boards' },
+        academy: { t: 'Rejoignez la New Ambassadors Academy', d: 'Rejoignez la Plexus New Ambassadors Academy sur Facebook.', link: 'academy' },
+        invite4: { t: 'Écrivez à {n} personnes avec qui vous aimeriez essayer Plexus', d: "Partagez pourquoi vous avez commencé, ce qui vous enthousiasme, qui vous a parlé de Plexus, et une invitation à vous accompagner.", s: ["Salut Sophie! J'espère que tu vas bien. J'ai récemment commencé à prendre des suppléments incroyables pour la santé intestinale et ça a tout changé pour moi. Si ça t'intéresse, j'aimerais t'envoyer de l'information.", "Salut Sophie! Je suis tellement contente. Je viens de commander des produits incroyables pour la santé intestinale qui ont donné d'excellents résultats à mon amie Julie. J'aimerais faire ça avec une amie. Je peux t'envoyer de l'information."] },
+        eventInvite: { t: 'Invitez {n} personnes à votre événement de lancement', d: "Essayez les messages vocaux : ils ajoutent une touche personnelle et transmettent votre enthousiasme.", s: ["Salut! Je me suis récemment associée à Plexus et j'organise mon premier événement pour partager ce que j'apprends. J'aimerais que tu te joignes à moi pour m'appuyer dans le lancement de mon entreprise."] },
+        subscription: { t: "Assurez-vous que votre commande d'abonnement est active", d: "Votre abonnement vous garde admissible aux commissions et vous assure d'avoir toujours vos produits préférés. Plus tard, aidez vos premiers clients et ambassadeurs de marque à vérifier le leur." },
+        conv: { t: 'Amorcez {n} conversations', d: "Communiquez avec des personnes que vous connaissez et qui pourraient vouloir améliorer leur santé, leur énergie, leur gestion du poids ou leur bien-être en général. Posez des questions et écoutez. Lorsque quelqu'un montre de l'intérêt, renseignez-vous sur ses objectifs.", s: ["Je suis emballée par certains changements que je fais pour ma santé. J'ai vu dans ta publication récente que tu travailles aussi sur ta santé. Qu'est-ce qui t'a fait décider que c'était le bon moment pour repartir à neuf?"] },
+        follow: { t: 'Faites un suivi auprès de {n} personnes', d: "Répondez à tous ceux qui ont réagi, aimé, commenté ou posé une question. Poursuivez la conversation par texto ou message privé pour répondre aux questions et connaître leurs objectifs.", s: ["Je voulais faire un suivi pour savoir si tu as des questions sur les produits ou sur tes objectifs. Ça me fera plaisir de t'aider."] },
+        firstPost: { t: 'Faites votre première publication', d: "Partagez pourquoi vous êtes enthousiaste, pourquoi vous avez commencé et vos objectifs, et invitez les autres à suivre votre parcours. Utilisez une photo claire, soyez vous-même, rendez la publication publique et identifiez votre parrain pour qu'il vous aide à augmenter sa portée.", s: ["J'en ai assez de me sentir ______. Mon parcours pour changer ça commence aujourd'hui. J'ai hâte de me concentrer sur ma santé et mon bien-être et de voir où ce parcours me mènera. Quelqu'un d'autre travaille sur ses objectifs de santé et veut me suivre?"], link: 'howShare' },
+        replies: { t: 'Répondez aux commentaires et aux messages', d: "Si quelqu'un demande ce qu'est Plexus, partagez un peu, puis renseignez-vous sur ses objectifs. Faites des liens avec ce qu'il vous raconte, demandez-lui comment cela affecte sa journée, puis offrez de l'information et des réponses.", s: ["Plexus est une entreprise de santé et de bien-être spécialisée dans les produits pour la santé intestinale, pour tous les besoins. Quels sont tes objectifs de santé?", 'Comment est-ce que ça affecte ta journée?', 'Est-ce que ces produits te semblent utiles pour tes objectifs de santé?'] },
+        family: { t: 'Convenez de vos heures de travail avec votre famille', d: "Choisissez les moments que vous consacrerez à votre entreprise chaque semaine, à votre rythme de {h}. Protéger ce temps vous aide à rester concentré." },
+        cartSend: { t: "Envoyez un lien de panier à ceux qui sont prêts à essayer", d: "Une fois que vous connaissez les objectifs de quelqu'un, envoyez-lui le lien de panier qui lui convient le mieux. C'est simple et ça facilite le démarrage.", s: ["D'après ce que tu m'as dit, j'ai préparé un panier recommandé pour te simplifier la vie. Jette un coup d'œil et dis-moi ce que tu as hâte d'essayer."], link: 'cart' },
+        remind: { t: 'Rappelez votre événement de lancement à vos invités', d: "Confirmez l'heure et la façon de se joindre, et remerciez-les de leur appui.", s: ["J'ai tellement hâte de te voir à mon événement de lancement! Voici de nouveau l'heure et le lien. Merci de m'appuyer!"] },
+        catchup: { t: 'Faites le point et préparez la suite', d: "Terminez ce que vous n'avez pas eu le temps de faire cette semaine, puis regardez ce qui s'en vient la semaine prochaine." },
+        plexusPay: { t: 'Activez votre compte Plexus Pay', d: "Cherchez le courriel reçu à votre première journée avec les instructions. Une fois votre compte activé, vous serez prêt à recevoir commissions et primes." },
+        post: { t: 'Partagez une autre publication sur votre parcours', d: "Idées : une habitude saine que vous adoptez, pourquoi vous avez décidé de prioriser votre santé, votre routine bien-être préférée, ou ce que vous avez hâte d'accomplir dans les 30 prochains jours.", s: ["Ces temps-ci, je réalise à quel point c'est important de prioriser ma santé. J'ai hâte de rester constante, d'adopter de nouvelles habitudes et de voir ce qui est possible au cours des prochains mois. Quel objectif de santé poursuis-tu en ce moment?"] },
+        launchEvent: { t: 'Tenez votre événement de lancement', d: "Organisez-le avec votre parrain et partagez votre enthousiasme. Si votre événement a lieu un autre jour, cochez cette activité quand il aura lieu." },
+        eventFollow: { t: 'Faites un suivi auprès de tous les participants à votre événement', d: "Remerciez chaque invité de sa présence, demandez-lui ce qui l'a le plus marqué et offrez de répondre à ses questions.", s: ["Merci beaucoup d'être venu à mon événement de lancement! Qu'est-ce qui t'a le plus marqué?"] },
+        training: { t: 'Participez à une formation en direct', d: "Trouvez les appels et événements à venir sur le Plexus Training Hub, et invitez quelqu'un.", link: 'hub' },
+        secondEvent: { t: 'Organisez un deuxième événement', d: "Essayez un autre format que votre lancement, comme une petite rencontre bien-être ou une discussion virtuelle sur les produits. Planifiez-le avec votre parrain." },
+        care: { t: 'Communiquez avec chaque nouveau client', d: "Demandez-lui comment il se sent, s'il a commencé ses produits et comment ils s'intègrent à sa routine.", s: ["Salut! Je voulais prendre de tes nouvelles. As-tu eu la chance de commencer tes produits? Si tu as des questions, fais-moi signe. Je suis là pour t'aider!", "Quel objectif as-tu le plus hâte d'atteindre?"] },
+        goals: { t: 'Notez les objectifs de chaque client', d: "Gardez une note simple des objectifs de chaque client pour que vos suivis restent personnels." },
+        spot: { t: 'Repérez qui pourrait vouloir partager avec vous', d: "Remarquez les personnes qui aiment faire des recommandations, qui entretiennent de bonnes relations, qui aiment aider les autres ou qui posent des questions sur la possibilité de gagner un revenu. Beaucoup d'ambassadeurs ont d'abord été des clients satisfaits." },
+        warm: { t: 'Recommuniquez avec {n} de vos prospects les plus intéressés', d: "Aidez les personnes qui ont montré de l'intérêt à passer à l'étape suivante.", s: ["Tu m'as dit que ton objectif est ______. Je crois que Plexus pourrait vraiment te convenir. Aimerais-tu que je t'aide à commencer?"] },
+        rereadWhy: { t: 'Relisez votre pourquoi', d: "Revenez à ce que vous avez écrit au jour 0. Chaque conversation vous en rapproche." },
+        identify: { t: 'Repérez une personne qui pourrait vouloir devenir ambassadeur de marque', d: "Pensez à quelqu'un qui aime encourager les autres, qui se passionne pour le bien-être, qui apprécierait une occasion de revenu supplémentaire ou qui aime partager ce qu'il aime." },
+        opportunity: { t1: "Ayez 1 conversation sur l'occasion d'affaires", t: "Ayez {n} conversations sur l'occasion d'affaires", d: "Parlez d'abord à votre parrain pour connaître les meilleures pratiques; il peut se joindre à vous.", s: ["J'ai adoré partager ça avec toi. As-tu déjà pensé à gagner un revenu supplémentaire en partageant des produits que tu aimes?"] },
+        learnBlock: { t: "Découvrez comment fonctionnent les Blocs d'affaires dans RightStart", d: "Voyez comment les clients VIP et les nouveaux ambassadeurs de marque forment des Blocs d'affaires, et parlez-en avec votre parrain.", link: 'rightstart' },
+        sponsorCheck: { t: 'Faites le point avec votre parrain', d: "Partagez ce qui fonctionne, posez vos questions et envoyez-lui le lien de vos progrès." },
+        growList: { t: 'Ajoutez {n} noms à votre liste', d: "Continuez à faire grandir votre liste avec les personnes que vous avez rencontrées, avec qui vous avez repris contact ou qui ont réagi à vos publications." },
+        learn: { t: 'Suivez une formation sur les produits ou les affaires', d: 'Choisissez une formation sur le Plexus Training Hub pour gagner en confiance.', link: 'hub' },
+        planNext: { t: 'Planifiez votre prochain mois avec votre parrain', d: "Revoyez vos 21 jours, célébrez ce qui a bien fonctionné et fixez vos objectifs et votre rythme hebdomadaire pour le mois prochain." },
+        survey: { t: 'Répondez au sondage Plexus U pour obtenir votre certificat', d: "Surveillez votre dernier courriel Plexus U : Premiers pas, qui contient le lien vers le sondage. Une fois le sondage rempli, vous recevrez votre certificat de réussite.", dLink: 'Répondez au sondage pour recevoir votre certificat de réussite Plexus U : Premiers pas.' },
+        celebrate: { t: 'Célébrez vos 21 premiers jours', d: "Partagez une publication sur ce que vous avez appris et remerciez les personnes qui vous ont appuyé." }
+      }
+    }
+  };
+
+  /* ------------------------------- Helpers ---------------------------- */
+  let lang = 'en';
+  const $ = s => document.querySelector(s);
+  const t = (k, ...a) => { const v = STR[lang][k] !== undefined ? STR[lang][k] : STR.en[k]; return typeof v === 'function' ? v(...a) : v; };
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const loc = () => LOCALES[lang];
+  // Dates are handled as local calendar days (YYYY-MM-DD) so time zones never shift a day
+  const ymd = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const parseYmd = s => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ''); return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null; };
+  const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+  const dayDiff = (a, b) => Math.round((Date.UTC(b.getFullYear(), b.getMonth(), b.getDate()) - Date.UTC(a.getFullYear(), a.getMonth(), a.getDate())) / 86400000);
+  const fmtDate = (d, opts) => new Intl.DateTimeFormat(loc(), opts || { weekday: 'long', month: 'long', day: 'numeric' }).format(d);
+  const cap = s => s.charAt(0).toLocaleUpperCase(loc()) + s.slice(1);
+  const roundHours = m => { const h = Math.round(m / 30) / 2; return lang === 'en' ? `${h} hour${h === 1 ? '' : 's'}` : lang === 'es' ? `${String(h).replace('.', ',')} horas`.replace(',', '.') : `${String(h).replace('.', ',')} h`; };
+
+  /* -------------------------------- State ----------------------------- */
+  const KEY = 'plexus-u-plan-v1';
+  const state = { pace: null, start: ymd(new Date()), done: {}, name: '', sel: null };
+  let sponsor = null;   // a shared snapshot being viewed
+
+  function load() {
+    try {
+      const s = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (s && typeof s === 'object') {
+        if (PACES.includes(s.pace)) state.pace = s.pace;
+        if (parseYmd(s.start)) state.start = s.start;
+        if (s.done && typeof s.done === 'object') state.done = s.done;
+        if (typeof s.name === 'string') state.name = s.name.slice(0, 40);
+      }
+    } catch (e) { /* storage unavailable */ }
+  }
+  function save() {
+    if (sponsor) return;
+    try { localStorage.setItem(KEY, JSON.stringify({ pace: state.pace, start: state.start, done: state.done, name: state.name })); } catch (e) { /* ignore */ }
+  }
+  const view = () => sponsor || state;
+
+  /* ------------------------------ The plan ---------------------------- */
+  const forPace = (entry, pace) => !entry[1] || !entry[1].length || entry[1].includes(pace);
+  const actId = (day, entry) => `${day}.${entry[0]}${entry[2] ? entry[2] : ''}`;
+  const minutesOf = (key, pace) => {
+    const m = MINUTES[key];
+    const base = typeof m === 'object' ? m[pace] : m;
+    return COUNT[key] && key !== 'names' ? base * COUNT[key][pace] : base;
+  };
+  function dayItems(day, pace) {
+    return DAYS[day].items.filter(e => forPace(e, pace)).map(e => ({ id: actId(day, e), key: e[0], ep: e[2] || null, min: minutesOf(e[0], pace) }));
+  }
+  const dayMinutes = (day, pace) => dayItems(day, pace).reduce((s, a) => s + a.min, 0);
+  const currentDay = v => { const s = parseYmd(v.start); return s ? dayDiff(s, parseYmd(v.asOf || ymd(new Date()))) : 0; };
+  const clampDay = n => Math.max(0, Math.min(21, n));
+
+  /* ----------------------------- Rendering ---------------------------- */
+  function renderPaces() {
+    const v = view();
+    const html = PACES.map(p => {
+      const s = t('pace')[p];
+      return `<button type="button" role="radio" class="pace" data-pace="${p}" aria-checked="${v.pace === p}">
+        <span class="pace-name">${s.name}</span><span class="pace-hours">${s.hours}</span><span class="pace-day">${s.day}</span>${s.tag ? `<span class="pace-tag">${s.tag}</span>` : ''}
+      </button>`;
+    }).join('');
+    $('#paces').innerHTML = html;
+    const mini = $('#pace-mini');
+    if (mini) mini.innerHTML = PACES.map(p => {
+      const s = t('pace')[p];
+      const tip = `${s.hours} · ${s.day}${s.tag ? ' · ' + s.tag : ''}`;
+      return `<button type="button" role="radio" data-pace="${p}" aria-checked="${v.pace === p}" data-tip="${esc(tip)}">${s.name}</button>`;
+    }).join('');
+    const pill = $('#pace-pill-label');
+    if (pill) pill.textContent = v.pace ? t('pace')[v.pace].name : 'Pace';
+    const ddLabel = $('#pace-dd-label');
+    if (ddLabel) ddLabel.textContent = v.pace ? t('pace')[v.pace].name : '';
+    const ddMenu = $('#pace-dd-menu');
+    if (ddMenu) ddMenu.innerHTML = PACES.map(p => {
+      const s = t('pace')[p];
+      const shortMap = { walk: 'up to 10hrs/wk', jog: '10–15hrs/wk', run: '20–40hrs/wk' };
+      const short = shortMap[p] || s.hours;
+      return `<button type="button" role="menuitemradio" data-pace="${p}" aria-checked="${v.pace === p}">${s.name}<span>${short}</span></button>`;
+    }).join('');
+    const sheetBody = $('#pace-sheet-body');
+    if (sheetBody) sheetBody.innerHTML = html;
+    updateEditChip();
+    wirePaceTips();
+  }
+  function shortDate(d) {
+    return new Intl.DateTimeFormat(loc(), { month: 'short', day: 'numeric' }).format(d).replace(/(\w+)/, '$1.');
+  }
+  function updateEditChip() {
+    const chip = $('#edit-start-label');
+    if (!chip) return;
+    const v = view();
+    const start = parseYmd(v.start);
+    const name = v.name || (lang === 'en' ? 'Your name' : lang === 'es' ? 'Tu nombre' : 'Votre nom');
+    chip.textContent = `${name} · ${start ? shortDate(start) : ''}`;
+  }
+
+  function actText(a, pace) {
+    const s = STR[lang].act[a.key] || STR.en.act[a.key] || {};
+    const n = COUNT[a.key] ? COUNT[a.key][pace] : '';
+    const fill = str => (str || '').replace('{n}', n).replace('{h}', t('pace')[pace].hours.toLowerCase());
+    if (a.key === 'podcast') return { t: t('podcastT', a.ep, t('podcast')[a.ep]), d: '', s: null };
+    return { t: fill(n === 1 && s.t1 ? s.t1 : s.t), d: fill(s.d), s: s.s || null, link: s.link || null, dLink: s.dLink };
+  }
+
+  function actHTML(a, pace, readOnly) {
+    const v = view();
+    const x = actText(a, pace);
+    const done = !!v.done[a.id];
+    let extra = '';
+    if (x.s) extra += `<details><summary>${t('act.say')}</summary><p class="own-note"><strong>${t('own.h')}:</strong> ${t('own.p')}</p>${x.s.map(q => `<p class="script">${esc(q)}</p>`).join('')}</details>`;
+    if (a.key === 'podcast') {
+      const url = CONFIG.PODCAST[a.ep];
+      extra += url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${t('act.open')} →</a>` : `<span class="soon">${t('podcastSoon')}</span>`;
+    } else if (a.key === 'survey' && CONFIG.SURVEY_URL) {
+      extra += `<a href="${esc(CONFIG.SURVEY_URL)}" target="_blank" rel="noopener">${t('act.open')} →</a>`;
+    } else if (x.link) {
+      const r = (t('res').find(r => r[0] === x.link) || [x.link, x.link]);
+      extra += `<a href="${LINKS[x.link]}" target="_blank" rel="noopener">${esc(r[1])} →</a>`;
+    }
+    const detail = a.key === 'survey' && CONFIG.SURVEY_URL ? x.dLink : x.d;
+    return `<li class="act${done ? ' done' : ''}">
+      <div class="act-row">
+        <input type="checkbox" id="c-${a.id}" data-id="${a.id}" ${done ? 'checked' : ''} ${readOnly ? 'disabled' : ''}>
+        <div><label class="act-title" for="c-${a.id}">${esc(x.t)}</label>${detail ? `<p class="act-detail">${esc(detail)}</p>` : ''}</div>
+        <span class="act-time">${t('mins', a.min)}</span>
+      </div>
+      ${extra ? `<div class="act-extra">${extra}</div>` : ''}
+    </li>`;
+  }
+
+  function renderDay() {
+    const v = view(), box = $('#day');
+    if (!v.pace) { box.innerHTML = `<p class="empty">${t('day.choose')}</p>`; return; }
+    const raw = currentDay(v);
+    const today = clampDay(raw);
+    const d = state.sel === null ? today : state.sel;
+    const start = parseYmd(v.start);
+    const items = dayItems(d, v.pace);
+    const doneN = items.filter(a => v.done[a.id]).length;
+    const mins = items.reduce((s, a) => s + a.min, 0);
+    const ms = DAYS[d].ms || 'keep';
+    let msg = '';
+    if (state.sel === null && raw < 0) msg = t(sponsor ? 'sp.before' : 'day.before', fmtDate(start, { month: 'long', day: 'numeric' }));
+    if (state.sel === null && raw > 21) msg = t(sponsor ? 'sp.after' : 'day.after');
+    const isToday = raw === d;
+    box.innerHTML = `
+      ${msg ? `<p class="note day-msg">${msg}</p>` : ''}
+      <div class="day-head">
+        <div>
+          <p class="day-kicker">${t('day.of', d)}${isToday && !sponsor ? ' · ' + t('day.today') : ''}</p>
+          <h3 class="day-title">${t('ms')[ms]}</h3>
+          <p class="day-date">${cap(fmtDate(addDays(start, d)))}</p>
+        </div>
+        <div class="day-nav">
+          <button type="button" class="btn" data-go="${d - 1}" ${d <= 0 ? 'disabled' : ''}>← ${t('day.prev')}</button>
+          ${!isToday && raw >= 0 && raw <= 21 ? `<button type="button" class="btn" data-go="today">${t('day.back')}</button>` : ''}
+          <button type="button" class="btn" data-go="${d + 1}" ${d >= 21 ? 'disabled' : ''}>${t('day.next')} →</button>
+        </div>
+      </div>
+      <div class="meter"><strong id="meter-text" aria-live="polite">${doneN === items.length ? t('day.all') : t('day.done', doneN, items.length)}</strong>
+        <div class="bar${doneN === items.length && items.length ? ' complete' : ''}" aria-hidden="true"><span id="meter-bar" style="width:${items.length ? doneN / items.length * 100 : 0}%"></span></div>
+        <span>${t('day.time', t('mins', mins))}</span></div>
+      <ul class="acts">${items.map(a => actHTML(a, v.pace, !!sponsor)).join('')}</ul>`;
+  }
+
+  function openDayModal(d, returnFocusEl) {
+    const v = view();
+    if (!v.pace) return;
+    const raw = currentDay(v);
+    const start = parseYmd(v.start);
+    const items = dayItems(d, v.pace);
+    const doneN = items.filter(a => v.done[a.id]).length;
+    const mins = items.reduce((s, a) => s + a.min, 0);
+    const ms = DAYS[d].ms || 'keep';
+    const isToday = raw === d && !sponsor;
+    const html = `
+      <div class="day-head">
+        <div>
+          <p class="day-kicker">${t('nav.day')}</p>
+          <h3 class="day-title" id="modal-day-title">${t('day.of', d)}${isToday ? ' · ' + t('day.today') : ''}</h3>
+          <p class="day-date">${t('ms')[ms]}</p>
+          <p class="day-date">${cap(fmtDate(addDays(start, d)))}</p>
+        </div>
+        <div class="day-nav">
+          <button type="button" class="btn" data-modal-go="${d - 1}" ${d <= 0 ? 'disabled' : ''}>← ${t('day.prev')}</button>
+          <button type="button" class="btn" data-modal-go="${d + 1}" ${d >= 21 ? 'disabled' : ''}>${t('day.next')} →</button>
+        </div>
+      </div>
+      <div class="meter"><strong>${doneN === items.length ? t('day.all') : t('day.done', doneN, items.length)}</strong>
+        <div class="bar${doneN === items.length && items.length ? ' complete' : ''}" aria-hidden="true"><span style="width:${items.length ? doneN / items.length * 100 : 0}%"></span></div>
+        <span>${t('day.time', t('mins', mins))}</span></div>
+      <ul class="acts">${items.map(a => actHTML(a, v.pace, !!sponsor)).join('')}</ul>`;
+    $('#modal-day-content').innerHTML = html;
+    $('#day-modal').hidden = false;
+    document.body.classList.add('modal-day');
+    state.modalDay = d;
+    state.modalReturn = returnFocusEl || document.activeElement;
+    const closeBtn = document.querySelector('.day-modal-close');
+    if (closeBtn) closeBtn.focus();
+    trapFocus($('#day-modal'));
+  }
+  function closeDayModal() {
+    $('#day-modal').hidden = true;
+    document.body.classList.remove('modal-day');
+    const ret = state.modalReturn;
+    state.modalDay = null;
+    state.modalReturn = null;
+    releaseFocusTrap();
+    if (ret && typeof ret.focus === 'function') ret.focus();
+  }
+  function refreshModalIfOpen() {
+    if (state.modalDay == null || $('#day-modal').hidden) return;
+    const openIds = [...document.querySelectorAll('#modal-day-content details[open]')].map(d => d.closest('.act')?.querySelector('input')?.dataset.id).filter(Boolean);
+    openDayModal(state.modalDay, state.modalReturn);
+    openIds.forEach(id => {
+      const box = document.querySelector(`#modal-day-content input[data-id="${id}"]`);
+      const det = box?.closest('.act')?.querySelector('details');
+      if (det) det.open = true;
+    });
+  }
+  function wirePaceTips() {
+    const tip = $('#pace-tip');
+    if (!tip) return;
+    document.querySelectorAll('#pace-mini button').forEach(btn => {
+      const show = () => {
+        tip.textContent = btn.dataset.tip || '';
+        tip.hidden = false;
+        const r = btn.getBoundingClientRect();
+        tip.style.left = Math.max(8, r.left) + 'px';
+        tip.style.top = (r.bottom + 6) + 'px';
+        tip.style.right = 'auto';
+      };
+      const hide = () => { tip.hidden = true; };
+      btn.addEventListener('mouseenter', show);
+      btn.addEventListener('mouseleave', hide);
+      btn.addEventListener('focus', show);
+      btn.addEventListener('blur', hide);
+    });
+  }
+  let focusTrapHandler = null;
+  function trapFocus(container) {
+    releaseFocusTrap();
+    const focusables = container.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (!focusables.length) return;
+    const first = focusables[0], last = focusables[focusables.length - 1];
+    focusTrapHandler = e => {
+      if (e.key !== 'Tab') return;
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+    container.addEventListener('keydown', focusTrapHandler);
+  }
+  function releaseFocusTrap() {
+    if (focusTrapHandler) {
+      document.querySelectorAll('.day-modal, .edit-pop').forEach(el => el.removeEventListener('keydown', focusTrapHandler));
+      focusTrapHandler = null;
+    }
+  }
+  function refreshDayState() {
+    const boxes = [...document.querySelectorAll('#day .act-row input')];
+    const doneN = boxes.filter(b => b.checked).length;
+    boxes.forEach(b => b.closest('.act').classList.toggle('done', b.checked));
+    const meterText = $('#meter-text');
+    const meterBar = $('#meter-bar');
+    if (meterText) meterText.textContent = doneN === boxes.length ? t('day.all') : t('day.done', doneN, boxes.length);
+    if (meterBar) {
+      meterBar.style.width = (boxes.length ? doneN / boxes.length * 100 : 0) + '%';
+      meterBar.parentElement.classList.toggle('complete', doneN === boxes.length && boxes.length > 0);
+    }
+  }
+
+  function renderPlan() {
+    const v = view();
+    if (!v.pace) { $('#plan-lede').textContent = t('day.choose'); $('#weeks').innerHTML = ''; $('#tally').innerHTML = ''; return; }
+    const p = t('pace')[v.pace];
+    $('#plan-lede').textContent = sponsor ? t('sp.planLede') : t('plan.lede', p.name, p.hours);
+    const start = parseYmd(v.start), raw = currentDay(v);
+    const sel = state.sel === null ? clampDay(raw) : state.sel;
+    $('#weeks').innerHTML = WEEKS.map(([a, b], w) => {
+      let cells = '', mins = 0;
+      for (let d = a; d <= b; d++) {
+        const items = dayItems(d, v.pace), n = items.filter(x => v.done[x.id]).length;
+        const totalMin = items.reduce((s, x) => s + x.min, 0);
+        const doneMin = items.filter(x => v.done[x.id]).reduce((s, x) => s + x.min, 0);
+        mins += totalMin;
+        const ms = DAYS[d].ms;
+        const isComplete = items.length && n === items.length;
+        cells += `<button type="button" class="dcell${d === raw ? ' today' : ''}${d === sel ? ' selected' : ''}${isComplete ? ' complete' : ''}" data-go="${d}" aria-label="${t('dayN', d)}, ${fmtDate(addDays(start, d), { month: 'short', day: 'numeric' })}${ms ? ', ' + t('ms')[ms] : ''}: ${t('day.done', n, items.length)}">
+          <svg class="dopen" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 14L14 6M9 6h5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="dnum">${t('dayN', d)}</span>
+          <span class="ddate">${fmtDate(addDays(start, d), { weekday: 'short', month: 'short', day: 'numeric' })}</span>
+          ${ms ? `<span class="dms">${t('ms')[ms]}</span>` : ''}
+          <span class="dprog" aria-hidden="true"><span style="width:${items.length ? n / items.length * 100 : 0}%"></span></span>
+          <span class="dmeta"><span>${doneMin}/${totalMin}min</span><span class="dfrac">${n}/${items.length}</span></span>
+          <span class="dcomplete">Complete</span>
+        </button>`;
+      }
+      return `<div class="week"><h3>${t('weeks')[w]} <span>· ${t('plan.week', roundHours(mins))}</span></h3><div class="days">${cells}</div></div>`;
+    }).join('');
+    // Activity totals from checked items
+    const totals = { conv: 0, follow: 0, invites: 0, posts: 0 };
+    for (let d = 0; d <= 21; d++) dayItems(d, v.pace).forEach(a => {
+      if (!v.done[a.id]) return;
+      Object.keys(TALLY).forEach(k => { if (TALLY[k].includes(a.key)) totals[k] += COUNT[a.key] ? COUNT[a.key][v.pace] : 1; });
+    });
+    $('#tally').innerHTML = Object.keys(totals).map(k => `<div><strong>${totals[k]}</strong><span>${t('tally')[k]}</span></div>`).join('');
+  }
+
+  function renderStatic() {
+    $('#four').innerHTML = t('four').map((x, i) => `<div><strong>${i + 1}</strong>${esc(x)}</div>`).join('');
+    $('#faq').innerHTML = t('faq').map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('');
+    const pods = Object.keys(CONFIG.PODCAST).filter(k => CONFIG.PODCAST[k]);
+    $('#res').innerHTML = t('res').map(([k, name, desc]) => `<a class="card" href="${LINKS[k]}" target="_blank" rel="noopener"><strong>${esc(name)}</strong><span>${esc(desc)}</span></a>`).join('')
+      + (pods.length
+        ? pods.map(k => `<a class="card" href="${esc(CONFIG.PODCAST[k])}" target="_blank" rel="noopener"><strong>${t('res.podcast')} ${k}</strong><span>${esc(t('podcast')[k])}</span></a>`).join('')
+        : `<div class="card soon-card"><strong>${t('res.podcast')}</strong><span>${t('res.podcastSoon')}</span></div>`);
+  }
+
+  function renderSponsorBanner() {
+    const b = $('#sponsor-banner');
+    document.body.classList.toggle('sponsor', !!sponsor);
+    if (!sponsor) { b.hidden = true; return; }
+    const day = clampDay(currentDay(sponsor));
+    let done = 0, total = 0;
+    for (let d = 0; d <= 21; d++) dayItems(d, sponsor.pace).forEach(a => { total++; if (sponsor.done[a.id]) done++; });
+    const asOf = parseYmd(sponsor.asOf);
+    let text = t('sp.text', esc(sponsor.name), fmtDate(asOf, { month: 'long', day: 'numeric', year: 'numeric' }), day, done, total);
+    if (currentDay(sponsor) < 0) text += ' ' + t('sp.before', fmtDate(parseYmd(sponsor.start), { month: 'long', day: 'numeric' }));
+    const sp = t('pace')[sponsor.pace];
+    if (sp) text += `<span class="sp-meta">${esc(t('sp.pace', sp.name, sp.hours, fmtDate(parseYmd(sponsor.start), { weekday: 'long', month: 'long', day: 'numeric' })))}</span>`;
+    $('#sponsor-text').innerHTML = text;
+    b.hidden = false;
+  }
+
+  function renderPrint() {
+    const v = view();
+    if (!v.pace) { $('#print-plan').innerHTML = ''; return; }
+    const start = parseYmd(v.start);
+    let html = `<h1>${t('h1')}${v.name ? ' · ' + esc(v.name) : ''}</h1><p class="p-sub">${t('print.sub', t('pace')[v.pace].name + ' (' + t('pace')[v.pace].hours + ')', fmtDate(start, { month: 'long', day: 'numeric', year: 'numeric' }))}</p>`;
+    for (let d = 0; d <= 21; d++) {
+      const items = dayItems(d, v.pace);
+      html += `<div class="p-day"><h2>${t('dayN', d)} · ${cap(fmtDate(addDays(start, d), { weekday: 'long', month: 'long', day: 'numeric' }))}${DAYS[d].ms ? ' · ' + t('ms')[DAYS[d].ms] : ''}</h2><ul>${items.map(a => `<li>${v.done[a.id] ? '☑' : '☐'} ${esc(actText(a, v.pace).t)} (${t('mins', a.min)})</li>`).join('')}</ul></div>`;
+    }
+    html += `<p class="p-foot">${t('print.foot')}</p><p class="p-foot">${t('disclaimer')}</p>`;
+    $('#print-plan').innerHTML = html;
+  }
+
+  function renderHeads() {
+    const n = sponsor ? esc(sponsor.name || '') : '';
+    const day = sponsor ? t('sp.day', n) : t('nav.day');
+    const dayH = $('#h-day'); if (dayH) dayH.innerHTML = day;
+    const dayLink = document.querySelector('#section-tabs a[href="#h-day"]');
+    if (dayLink) dayLink.innerHTML = day;
+    const planH = $('#h-plan'); if (planH) planH.innerHTML = sponsor ? t('sp.plan', n) : t('plan.h');
+    const planLink = document.querySelector('#section-tabs a[href="#h-plan"]');
+    if (planLink) planLink.innerHTML = sponsor ? t('sp.plan', n) : t('nav.plan');
+    const pb = $('#print-btn'); if (pb) pb.innerHTML = sponsor ? t('sp.print') : t('plan.print');
+    const skip = $('.skip'); if (skip) skip.setAttribute('href', sponsor ? '#main' : '#setup');
+  }
+  function render() {
+    renderSponsorBanner();
+    renderHeads();
+    renderPaces();
+    const v = view();
+    $('#start-date').value = v.start;
+    $('#first-name').value = v.name || '';
+    $('#start-date').disabled = $('#first-name').disabled = !!sponsor;
+    $('#share-btn').disabled = !!sponsor;
+    if (state.pace && $('#share-note').textContent === t('share.needPace')) $('#share-note').hidden = true;
+    renderDay();
+    renderPlan();
+    refreshModalIfOpen();
+  }
+
+  /* ------------------------------ Sharing ----------------------------- */
+  function encodeShare() {
+    // Compact snapshot: pace, start, name, today's date, and the checked activity ids
+    const ids = [];
+    for (let d = 0; d <= 21; d++) dayItems(d, state.pace).forEach((a, i) => { if (state.done[a.id]) ids.push(d * 100 + i); });
+    const data = { v: 1, p: PACES.indexOf(state.pace), s: state.start, n: state.name || '', a: ymd(new Date()), c: ids };
+    const json = JSON.stringify(data);
+    return btoa(unescape(encodeURIComponent(json))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  function decodeShare(str) {
+    try {
+      let b64 = str.replace(/-/g, '+').replace(/_/g, '/');
+      while (b64.length % 4) b64 += '=';
+      const d = JSON.parse(decodeURIComponent(escape(atob(b64))));
+      if (!d || d.v !== 1 || !PACES[d.p] || !parseYmd(d.s) || !parseYmd(d.a)) return null;
+      const pace = PACES[d.p], done = {};
+      (Array.isArray(d.c) ? d.c : []).forEach(code => {
+        const day = Math.floor(code / 100), i = code % 100;
+        if (day < 0 || day > 21) return;
+        const a = dayItems(day, pace)[i];
+        if (a) done[a.id] = 1;
+      });
+      return { pace, start: d.s, name: String(d.n || '').slice(0, 40), asOf: d.a, done };
+    } catch (e) { return null; }
+  }
+  let toastTimer = null;
+  function toast(msg) {
+    const el = $('#toast'); el.textContent = msg; el.hidden = false;
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => { el.hidden = true; }, 4000);
+  }
+  async function share() {
+    const note = $('#share-note');
+    if (!state.pace) {
+      // A link needs a plan to show, so send them back to Step 1
+      note.textContent = t('share.needPace'); note.hidden = false;
+      $('#h-setup').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      const first = document.querySelector('.pace'); if (first) first.focus({ preventScroll: true });
+      return;
+    }
+    // A preview or a file opened from a computer has no web address a Sponsor can open
+    const local = !/^https?:$/.test(location.protocol);
+    note.textContent = local ? t('share.local') : ''; note.hidden = !local;
+    const url = location.href.replace(/[?#].*$/, '') + (lang !== 'en' ? `?lang=${lang}` : '') + '#s=' + encodeShare();
+    $('#share-url').value = url;
+    $('#share-link').hidden = false;
+    if (navigator.share) {
+      try { await navigator.share({ title: t('share.text', state.name), url }); return; }
+      catch (e) { if (e && e.name === 'AbortError') return; }
+    }
+    copy(url);
+  }
+  async function copy(url) {
+    try { await navigator.clipboard.writeText(url); toast(t('share.copied')); }
+    catch (e) { const el = $('#share-url'); el.focus(); el.select(); }
+  }
+
+  /* --------------------------- Language & menus ----------------------- */
+  function setLang(next, saveIt) {
+    lang = STR[next] ? next : 'en';
+    document.documentElement.lang = LOCALES[lang];
+    document.title = t('title');
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', t('sub'));
+    document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = t(el.dataset.i18n); });
+    document.querySelectorAll('#lang-group button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    $('#lang-group').setAttribute('aria-label', t('nav.lang'));
+    $('#nav-burger').setAttribute('aria-label', t('nav.label'));
+    $('#lang-burger').setAttribute('aria-label', t('nav.lang'));
+    renderStatic();
+    render();
+    syncChrome();
+    if (saveIt) {
+      try { localStorage.setItem('rs-lang', lang); } catch (e) { /* ignore */ }
+      const url = new URL(location.href);
+      if (lang === 'en') url.searchParams.delete('lang'); else url.searchParams.set('lang', lang);
+      history.replaceState(null, '', url);
+    }
+  }
+  function initialLang() {
+    const fromUrl = new URLSearchParams(location.search).get('lang');
+    if (fromUrl && STR[fromUrl]) return fromUrl;
+    try { const saved = localStorage.getItem('rs-lang'); if (saved && STR[saved]) return saved; } catch (e) { /* ignore */ }
+    const navLang = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    return STR[navLang] ? navLang : 'en';
+  }
+  let sheet = null;
+  function setSheet(next) {
+    sheet = next;
+    document.body.classList.toggle('sheet-nav', next === 'nav');
+    document.body.classList.toggle('sheet-lang', next === 'lang');
+    const paceSheet = $('#pace-sheet');
+    if (paceSheet) paceSheet.hidden = next !== 'pace';
+    $('#sheet-backdrop').hidden = !next;
+    $('#nav-burger').setAttribute('aria-expanded', String(next === 'nav'));
+    $('#lang-burger').setAttribute('aria-expanded', String(next === 'lang'));
+    const pill = $('#pace-pill');
+    if (pill) pill.setAttribute('aria-expanded', String(next === 'pace'));
+    document.querySelectorAll('.masthead, .setup, main, footer').forEach(el => { el.inert = !!next; });
+  }
+  function syncChrome() {
+    const topH = Math.ceil($('.topbar').getBoundingClientRect().height);
+    const narrow = window.matchMedia('(max-width: 860px)').matches;
+    const subH = narrow ? 0 : Math.ceil($('.subnav').getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--topbar-h', topH + 'px');
+    document.documentElement.style.setProperty('--chrome', (topH + subH) + 'px');
+  }
+  function syncCurrent() {
+    const heads = [...document.querySelectorAll('main .sec > h2')].filter(h => h.offsetParent !== null);
+    const chrome = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--chrome')) || 0;
+    let current = heads[0];
+    heads.forEach(h => { if (h.getBoundingClientRect().top <= chrome + 12) current = h; });
+    document.querySelectorAll('#section-tabs a').forEach(a => {
+      if (a.getAttribute('href') === '#' + current.id) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
+    });
+  }
+
+  /* ------------------------------- Events ----------------------------- */
+  document.addEventListener('click', e => {
+    if (e.target.closest('#pace-dd-btn')) {
+      const menu = $('#pace-dd-menu');
+      menu.hidden = !menu.hidden;
+      $('#pace-dd-btn').setAttribute('aria-expanded', String(!menu.hidden));
+      return;
+    }
+    if (!$('#pace-dd-menu').hidden && !e.target.closest('#pace-dd')) {
+      $('#pace-dd-menu').hidden = true;
+      $('#pace-dd-btn').setAttribute('aria-expanded', 'false');
+    }
+    if (e.target.closest('#pace-dd-menu button')) {
+      const btn = e.target.closest('button');
+      if (btn.dataset.pace && !sponsor) { state.pace = btn.dataset.pace; save(); render(); }
+      $('#pace-dd-menu').hidden = true;
+      $('#pace-dd-btn').setAttribute('aria-expanded', 'false');
+      return;
+    }
+    if (e.target.closest('#lang-burger')) { setSheet(sheet === 'lang' ? null : 'lang'); return; }
+    if (e.target.closest('#pace-pill')) { setSheet(sheet === 'pace' ? null : 'pace'); return; }
+    if (e.target.closest('#edit-start')) {
+      const pop = $('#edit-pop');
+      pop.hidden = !pop.hidden;
+      if (!pop.hidden) {
+        $('#edit-name').value = state.name || '';
+        $('#edit-date').value = state.start;
+        trapFocus(pop);
+        $('#edit-name').focus();
+        $('#edit-start').setAttribute('aria-expanded', 'true');
+      } else {
+        releaseFocusTrap();
+        $('#edit-start').setAttribute('aria-expanded', 'false');
+      }
+      return;
+    }
+    if (!$('#edit-pop').hidden && !e.target.closest('#edit-pop') && !e.target.closest('#edit-start')) {
+      $('#edit-pop').hidden = true;
+      releaseFocusTrap();
+      $('#edit-start').setAttribute('aria-expanded', 'false');
+      return;
+    }
+    if (e.target.closest('[data-close="modal"]')) {
+      closeDayModal();
+      return;
+    }
+    if (e.target.closest('[data-close]') || e.target.closest('#sheet-backdrop')) { setSheet(null); return; }
+    const lb = e.target.closest('#lang-group button');
+    if (lb) { setLang(lb.dataset.lang, true); if (sheet) setSheet(null); return; }
+    if (e.target.closest('#section-tabs a') && sheet) { setSheet(null); return; }
+    const pc = e.target.closest('.pace, #pace-mini button');
+    if (pc && !sponsor && pc.dataset.pace) { state.pace = pc.dataset.pace; save(); render(); return; }
+    const go = e.target.closest('[data-go]');
+    if (go) {
+      const raw = currentDay(view());
+      const dayNum = go.dataset.go === 'today' ? clampDay(raw) : clampDay(Number(go.dataset.go));
+      state.sel = go.dataset.go === 'today' ? null : dayNum;
+      if (state.sel !== null && state.sel === clampDay(raw) && raw >= 0 && raw <= 21) state.sel = null;
+      renderDay(); renderPlan();
+      if (go.classList.contains('dcell')) {
+        openDayModal(dayNum, go);
+      } else {
+        $('#h-day').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      }
+      return;
+    }
+    const mgo = e.target.closest('[data-modal-go]');
+    if (mgo && state.modalDay != null) {
+      const nd = clampDay(Number(mgo.dataset.modalGo));
+      openDayModal(nd, state.modalReturn);
+      return;
+    }
+    if (e.target.closest('#share-btn')) { share(); return; }
+    if (e.target.closest('#copy-btn')) { copy($('#share-url').value); return; }
+    if (e.target.closest('#print-btn')) { renderPrint(); window.print(); return; }
+    if (e.target.closest('#sponsor-exit')) {
+      sponsor = null; state.sel = null;
+      history.replaceState(null, '', location.href.split('#')[0]);
+      render(); window.scrollTo({ top: 0 });
+    }
+  });
+  document.addEventListener('change', e => {
+    if (sponsor) return;
+    const el = e.target;
+    if (el.matches('.act-row input[type="checkbox"]')) {
+      if (el.checked) state.done[el.dataset.id] = 1; else delete state.done[el.dataset.id];
+      save(); refreshDayState(); renderPlan(); refreshModalIfOpen();
+    } else if (el.id === 'start-date' || el.id === 'edit-date') {
+      if (parseYmd(el.value)) {
+        state.start = el.value;
+        state.sel = null;
+        if (state.modalDay != null) {
+          const raw = currentDay(view());
+          state.modalDay = clampDay(state.modalDay);
+        }
+        save(); render(); refreshModalIfOpen();
+      }
+    }
+  });
+  document.addEventListener('input', e => {
+    if ((e.target.id === 'first-name' || e.target.id === 'edit-name') && !sponsor) { state.name = e.target.value.slice(0, 40); save(); updateEditChip(); refreshModalIfOpen(); }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (document.body.classList.contains('modal-day')) closeDayModal();
+      else if (!$('#edit-pop').hidden) { $('#edit-pop').hidden = true; releaseFocusTrap(); $('#edit-start').setAttribute('aria-expanded', 'false'); }
+      else if (sheet) setSheet(null);
+    }
+  });
+  function updateDock() {
+    if (sponsor) { document.body.classList.remove("pace-docked", "edit-docked"); return; }
+    const inputs = document.querySelector(".setup-row");
+    const paces = document.getElementById("paces");
+    const topbarH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--topbar-h")) || 0;
+    const inputsPast = inputs ? inputs.getBoundingClientRect().bottom <= topbarH : false;
+    const pacesPast = paces ? paces.getBoundingClientRect().bottom <= topbarH : false;
+    document.body.classList.toggle("edit-docked", inputsPast);
+    document.body.classList.toggle("pace-docked", pacesPast);
+  }
+  window.addEventListener('scroll', () => requestAnimationFrame(() => { syncCurrent(); updateDock(); }), { passive: true });
+  window.addEventListener('resize', () => { if (window.matchMedia('(min-width: 861px)').matches) setSheet(null); syncChrome(); syncCurrent(); updateDock(); });
+
+  /* -------------------------------- Init ------------------------------ */
+  load();
+  if (location.hash.indexOf('#s=') === 0) {
+    sponsor = decodeShare(location.hash.slice(3));
+    if (!sponsor) history.replaceState(null, '', location.href.split('#')[0]);
+  }
+  setLang(initialLang(), false);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { syncChrome(); syncCurrent(); updateDock(); });
+  syncCurrent();
+  updateDock();
+})();
+</script>
+</body>
+</html>
